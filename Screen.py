@@ -1,7 +1,5 @@
-
 import pygame
 import Consts
-
 
 def fill_colors(matrix, screen):
     # run over all the cells in the current matrix
@@ -10,12 +8,14 @@ def fill_colors(matrix, screen):
             color = Consts.BACKGROUND_COLOR
             pygame.draw.rect(screen, color, (j * Consts.SIZE, i * Consts.SIZE, Consts.SIZE - 1, Consts.SIZE - 1))
     pygame.display.update()
+
 def create_board():
     pygame.init()
     # Set the screen size
     screen = pygame.display.set_mode((Consts.NUMBER_OF_COLUMNS * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE))
     pygame.display.flip()
     pygame.display.update()
+    screen.fill(Consts.GRID_COLOR)
     # Create zeros matrix
     matrix = [[0 for x in range(Consts.NUMBER_OF_COLUMNS)] for y in range(Consts.NUMBER_OF_ROWS)]
     fill_colors(matrix, screen)
