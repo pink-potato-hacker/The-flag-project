@@ -8,14 +8,21 @@ screen = pygame.display.set_mode((Consts.NUMBER_OF_COLUMNS * Consts.SIZE, Consts
 # dark_surface
 # light_surface
 # soldier_flag_surface
-
+solider_location = (0,0)
 def create_light_surface():
     # Set the screen size
     size = (Consts.SIZE * Consts.NUMBER_OF_COLUMNS, Consts.SIZE * Consts.NUMBER_OF_ROWS)
     light_surface = pygame.Surface(size)
     light_surface = pygame.display.set_mode(size)
     pygame.draw.rect(light_surface, Consts.BACKGROUND_LIGHT_COLOR, pygame.Rect(0, 0, Consts.SIZE * Consts.NUMBER_OF_COLUMNS, Consts.SIZE * Consts.NUMBER_OF_ROWS))
-
+    soldier_img = pygame.image.load("png files/fat_green_soldier.png").convert()
+    soldier_img = pygame.transform.scale(soldier_img, (Consts.SIZE * 2, Consts.SIZE * 4))
+    light_surface.blit(soldier_img, solider_location)
+    pygame.display.update()
+    flag_img = pygame.image.load("png files/fat_green_flag.png").convert()
+    flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 2, Consts.SIZE * 4))
+    light_surface.blit(flag_img, (1200, 525))
+    pygame.display.update()
     grass_img = pygame.image.load("png files/grass.png").convert_alpha()
     grass_img = pygame.transform.scale(grass_img, (Consts.SIZE * 2, Consts.SIZE * 3))
 
@@ -47,7 +54,14 @@ def create_dark_surface():
     # Create zeros matrix
     matrix = [[0 for x in range(Consts.NUMBER_OF_COLUMNS)] for y in range(Consts.NUMBER_OF_ROWS)]
     fill_colors(matrix)
-
+    soldier_img = pygame.image.load("png files/fat_night_soldier.png").convert()
+    soldier_img = pygame.transform.scale(soldier_img, (Consts.SIZE * 2, Consts.SIZE * 4))
+    dark_surface.blit(soldier_img, solider_location)
+    pygame.display.update()
+    flag_img = pygame.image.load("png files/fat_night_flag.png").convert()
+    flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 2, Consts.SIZE * 4))
+    dark_surface.blit(flag_img, (1200, 525))
+    pygame.display.update()
     mine_img = pygame.image.load("png files/mine.png").convert_alpha()
     mine_img = pygame.transform.scale(mine_img, (Consts.SIZE * Consts.MINES_SIZE[1], Consts.SIZE * Consts.MINES_SIZE[0]))
 
