@@ -3,6 +3,7 @@ import random
 
 mine_field = []
 mines = [[] for n in range(20)]
+grass = []
 
 # change for loop
 def create_empty_mine_field():
@@ -20,10 +21,16 @@ def randomize_mines():
             mine_field[rnd_row][rnd_col + i] = Consts.MINES
             mines[mine_index].append(rnd_col + i)
 
+def randomize_grass():
+    for grass_index in range(20):
+        rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * 25)
+        rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
+        grass.append((rnd_x, rnd_y))
 def put_flag():
     pass
 
 
 create_empty_mine_field()
 randomize_mines()
-print(mines)
+randomize_grass()
+print(grass)

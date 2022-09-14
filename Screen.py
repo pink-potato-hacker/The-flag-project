@@ -1,5 +1,6 @@
 import pygame
 import time
+import MineField
 import Consts
 
 screen = pygame.display.set_mode((Consts.NUMBER_OF_COLUMNS * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE))
@@ -14,6 +15,13 @@ def create_light_surface():
     light_surface = pygame.Surface(size)
     light_surface = pygame.display.set_mode(size)
     pygame.draw.rect(light_surface, Consts.BACKGROUND_LIGHT_COLOR, pygame.Rect(0, 0, Consts.SIZE * Consts.NUMBER_OF_COLUMNS, Consts.SIZE * Consts.NUMBER_OF_ROWS))
+
+    grass_img = pygame.image.load("png files/grass.png").convert_alpha()
+    grass_img = pygame.transform.scale(grass_img, (Consts.SIZE * 2, Consts.SIZE * 3))
+
+    for grass_index in range(20):
+        screen.blit(grass_img, MineField.grass[grass_index])
+
     pygame.display.flip()
     pygame.display.update()
 
@@ -36,6 +44,18 @@ def create_dark_surface():
     # Create zeros matrix
     matrix = [[0 for x in range(Consts.NUMBER_OF_COLUMNS)] for y in range(Consts.NUMBER_OF_ROWS)]
     fill_colors(matrix)
+
+    mine_img = pygame.image.load("png files/mine.png").convert_alpha()
+    mine_img = pygame.transform.scale(mine_img, (Consts.SIZE * Consts.MINES_SIZE[1], Consts.SIZE * Consts.MINES_SIZE[0]))
+
+    for mine_index in range(20):
+        x = MineField.mines[mine_index][1] * Consts.SIZE
+        y = MineField.mines[mine_index][0] * Consts.SIZE
+        screen.blit(mine_img, (x, y))
+
+    pygame.display.flip()
+    pygame.display.update()
+
 
     start_time = time.time()
     while True:
