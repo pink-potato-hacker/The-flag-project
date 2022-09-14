@@ -20,3 +20,9 @@ MINES_SIZE = (1, 3)  # 1 height, 3 width
 
 WIN_MESSAGE = "You won!"
 LOSE_MESSAGE = "You lost!"
+
+SOLIDER_LEGS = 'solider legs'
+SOLIDER_BODY = 'solider body'
+MINES = 'mine'
+FLAG = 'flag'
+EMPTY = '0'
