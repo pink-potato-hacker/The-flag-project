@@ -13,3 +13,10 @@ SIZE = 25
 SOLIDER_PNG_SIZE = (4, 2)  # 4 height, 2 width
 SOLIDER_STARTING_PLACE = (0, 0)  # x = 0, y = 0
 
+FLAG_SIZE = (3, 4)  # 3 height, 4 width
+WINDOW_LOCATION = (21, 47)
+
+MINES_SIZE = (1, 3)  # 1 height, 3 width
+
+WIN_MESSAGE = "You won!"
+LOSE_MESSAGE = "You lost!"
