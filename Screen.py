@@ -1,4 +1,6 @@
 import pygame
+
+import pygame
 import Consts
 
 def fill_colors(matrix, screen):

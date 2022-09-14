@@ -1,6 +1,6 @@
 NUMBER_OF_GRASS = 20
 NUMBER_OF_MINES = 20
-BACKGROUND_COLOR = (96, 184, 68)
+BACKGROUND_COLOR = (190, 229, 176)
 GRID_COLOR = (0, 0, 0)
 WELCOME_MESSAGE = "Welcome to The Flag game." \
                   "Have Fun!"
