@@ -32,6 +32,9 @@ def create_light_surface():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_RETURN:
+                    create_dark_surface()
 
 def create_dark_surface():
     # Set the screen size
@@ -56,19 +59,19 @@ def create_dark_surface():
     pygame.display.flip()
     pygame.display.update()
 
-
     start_time = time.time()
+
     while True:
         current_time = time.time()
         elapsed_time = current_time - start_time
-        if elapsed_time > 1:
-            break
         # Wait for events
         for event in pygame.event.get():
             # if user wants to QUIT, close pygame
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
+            if elapsed_time > 1:
+                create_light_surface()
 
 def fill_colors(matrix):
     # run over all the cells in the current matrix
@@ -79,5 +82,5 @@ def fill_colors(matrix):
     pygame.display.update()
 
 pygame.init()
-create_dark_surface()
+
 create_light_surface()
