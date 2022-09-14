@@ -1,7 +1,6 @@
 import pygame
 import Consts
 
-
 def fill_colors(matrix, screen):
     # run over all the cells in the current matrix
     for i in range(Consts.NUMBER_OF_ROWS):
@@ -9,8 +8,6 @@ def fill_colors(matrix, screen):
             color = Consts.BACKGROUND_COLOR
             pygame.draw.rect(screen, color, (j * Consts.SIZE, i * Consts.SIZE, Consts.SIZE - 1, Consts.SIZE - 1))
     pygame.display.update()
-
-
 def create_board():
     pygame.init()
     # Set the screen size
@@ -28,6 +25,5 @@ def create_board():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
-
 
 create_board()
