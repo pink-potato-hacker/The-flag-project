@@ -1,9 +1,7 @@
 import pygame
-import time
 import MineField
 import Consts
 import Screen
-
 
 def main():
     pygame.init()
