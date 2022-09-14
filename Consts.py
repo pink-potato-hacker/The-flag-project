@@ -1,0 +1,13 @@
+NUMBER_OF_GRASS = 20
+NUMBER_OF_MINES = 20
+BACKGROUND_COLOR = (96, 184, 68)
+WELCOME_MESSAGE = "Welcome to The Flag game." \
+                  "Have Fun!"
+NUMBER_OF_ROWS = 25
+NUMBER_OF_COLUMN = 50
+WINDOW_WIDTH = 25
+WINDOW_HEIGHT = 50
+
+SOLIDER_PNG_SIZE = (4, 2)  # 4 height, 2 width
+SOLIDER_STARTING_PLACE = (0, 0)  # x = 0, y = 0
+
