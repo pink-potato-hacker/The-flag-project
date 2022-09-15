@@ -84,5 +84,4 @@ def fill_colors(matrix):
             color = Consts.BACKGROUND_DARK_COLOR
             pygame.draw.rect(screen, color, (j * Consts.SIZE, i * Consts.SIZE, Consts.SIZE - 1, Consts.SIZE - 1))
 
-
 pygame.init()

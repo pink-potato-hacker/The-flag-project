@@ -1,4 +1,5 @@
 import Consts
+import MineField
 import Screen
 import pygame
 

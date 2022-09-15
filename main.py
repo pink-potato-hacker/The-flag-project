@@ -8,6 +8,7 @@ import Soldier
 def main():
     pygame.init()
 
+    win_or_lose = 0
     screen_timer = 0
     message_timer = pygame.time.get_ticks()
 
@@ -60,6 +61,15 @@ def main():
                 if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN]:
                     moved = False
 
+        win_or_lose = MineField.what_happned(soldier_x_location, soldier_y_location)
+        MineField.put_solider_in_matrix(soldier_x_location, soldier_y_location)
+        if win_or_lose != 0:
+            break
+
+    if win_or_lose == 2:
+        print("win")
+    else:
+        print("lose")
 
 if __name__ == '__main__':
     main()

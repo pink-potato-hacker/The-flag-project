@@ -6,7 +6,6 @@ mines = [[] for n in range(20)]
 grass = []
 flower = []
 
-
 def create_empty_mine_field():
     global mine_field
 
@@ -51,3 +50,43 @@ def put_flag():
     for row in range(21, 25):
         for col in range(46, 50):
             mine_field[row][col] = Consts.FLAG
+
+def put_solider_in_matrix(coord_x, coord_y):
+    col = coord_x // Consts.SIZE
+    row = coord_y // Consts.SIZE
+
+    for x_index in range(len(mine_field)):
+        for y_index in range(len(mine_field[0])):
+            if mine_field[x_index][y_index] == Consts.SOLIDER_BODY:
+                mine_field[x_index][y_index] = Consts.EMPTY
+            elif mine_field[x_index][y_index] == Consts.SOLIDER_LEGS:
+                mine_field[x_index][y_index] = Consts.EMPTY
+
+
+    if mine_field[row][col] != Consts.MINES and mine_field[row][col + 1] != Consts.MINES:
+        if mine_field[row][col] != Consts.FLAG and mine_field[row][col + 1] != Consts.FLAG:
+            mine_field[row][col] = Consts.SOLIDER_BODY
+            mine_field[row][col + 1] = Consts.SOLIDER_BODY
+
+    if mine_field[row + 1][col] != Consts.MINES and mine_field[row + 1][col + 1] != Consts.MINES:
+        if mine_field[row + 1][col] != Consts.FLAG and mine_field[row + 1][col + 1] != Consts.FLAG:
+            mine_field[row + 1][col] = Consts.SOLIDER_BODY
+            mine_field[row + 1][col + 1] = Consts.SOLIDER_BODY
+
+    if mine_field[row + 2][col] != Consts.MINES and mine_field[row + 2][col + 1] != Consts.MINES:
+        if mine_field[row + 2][col] != Consts.FLAG and mine_field[row + 2][col + 1] != Consts.FLAG:
+            mine_field[row + 2][col] = Consts.SOLIDER_BODY
+            mine_field[row + 2][col + 1] = Consts.SOLIDER_BODY
+
+    if mine_field[row + 3][col] != Consts.MINES and mine_field[row + 3][col + 1] != Consts.MINES:
+        if mine_field[row + 3][col] != Consts.FLAG and mine_field[row + 3][col + 1] != Consts.FLAG:
+            mine_field[row + 3][col] = Consts.SOLIDER_LEGS
+            mine_field[row + 3][col + 1] = Consts.SOLIDER_LEGS
+
+def what_happned(coord_x, coord_y):
+    # 1 - Lose, 2 - Win
+    if mine_field[coord_y // Consts.SIZE + 3][coord_x // Consts.SIZE] == Consts.MINES or mine_field[coord_y // Consts.SIZE + 3][coord_x // Consts.SIZE + 1] == Consts.MINES:
+        return 1
+    elif mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE] == Consts.FLAG and mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE + 1] == Consts.FLAG:
+        return 2
+    return 0
