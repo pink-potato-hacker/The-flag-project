@@ -4,6 +4,7 @@ import random
 mine_field = []
 mines = [[] for n in range(20)]
 grass = []
+flower = []
 
 
 def create_empty_mine_field():
