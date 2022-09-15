@@ -5,7 +5,6 @@ import Consts
 
 screen = pygame.display.set_mode((Consts.NUMBER_OF_COLUMNS * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE))
 
-
 # dark_surface
 # light_surface
 # soldier_flag_surface
@@ -23,6 +22,10 @@ def create_light_surface():
 
     for grass_index in range(20):
         screen.blit(grass_img, MineField.grass[grass_index])
+
+    flag_img = pygame.image.load("png files/flag.png").convert_alpha()
+    flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 4, Consts.SIZE * 3))
+    screen.blit(flag_img, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE - 4 * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE - 3 * Consts.SIZE))
 
 
 def create_dark_surface():
@@ -45,6 +48,10 @@ def create_dark_surface():
         x = MineField.mines[mine_index][1] * Consts.SIZE
         y = MineField.mines[mine_index][0] * Consts.SIZE
         screen.blit(mine_img, (x, y))
+
+    flag_img = pygame.image.load("png files/flag.png").convert_alpha()
+    flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 4, Consts.SIZE * 3))
+    screen.blit(flag_img, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE - 4 * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE - 3 * Consts.SIZE))
 
 
 def fill_colors(matrix):

@@ -5,7 +5,6 @@ mine_field = []
 mines = [[] for n in range(20)]
 grass = []
 
-
 def create_empty_mine_field():
     global mine_field
 
@@ -14,7 +13,6 @@ def create_empty_mine_field():
         for col in range(Consts.NUMBER_OF_COLUMNS):
             row.append(Consts.EMPTY)
         mine_field.append(row)
-
 
 def randomize_mines():
     for mine_index in range(20):
@@ -33,10 +31,10 @@ def randomize_grass():
         rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
         grass.append((rnd_x, rnd_y))
 
-
 def put_flag():
-    pass
-
+    for row in range(21, 24):
+        for col in (46, 50):
+            mine_field[row][col] = Consts.FLAG
 
 create_empty_mine_field()
 randomize_mines()
