@@ -4,6 +4,7 @@ import Consts
 import Screen
 import Soldier
 
+
 def main():
     pygame.init()
 
@@ -28,6 +29,10 @@ def main():
             Soldier.placing_day_soldier(Soldier.moving_soldier(soldier_x_location, soldier_y_location))
             soldier_x_location = Soldier.moving_soldier(soldier_x_location, soldier_y_location)[0]
             soldier_y_location = Soldier.moving_soldier(soldier_x_location, soldier_y_location)[-1]
+
+        if (pygame.time.get_ticks() - screen_timer) / 1000 < 1:
+            Screen.welcome_text()
+
         pygame.display.flip()
         pygame.display.update()
 
