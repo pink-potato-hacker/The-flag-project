@@ -56,7 +56,7 @@ def create_dark_surface():
         screen.blit(mine_img, (x, y))
 
     flag_img = pygame.image.load("png files/flag.png").convert_alpha()
-    flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 2, Consts.SIZE * 2))
+    flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 1, Consts.SIZE * 2))
     screen.blit(flag_img, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE - 4 * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE - 3 * Consts.SIZE))
 
 
