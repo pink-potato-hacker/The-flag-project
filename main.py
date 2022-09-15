@@ -67,7 +67,7 @@ def main():
         if win_or_lose != 0:
             if win_or_lose == 2:
                 while (pygame.time.get_ticks() - screen_timer) / 1000 < 3:
-                    Screen.lose_text()
+                    Screen.win_text()
                 break
             elif win_or_lose == 1:
                 while (pygame.time.get_ticks() - screen_timer) / 1000 < 3:

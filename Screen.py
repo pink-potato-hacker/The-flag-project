@@ -52,7 +52,7 @@ def welcome_text():
 
 def lose_text():
 
-    font = pygame.font.SysFont(Consts.WELCOME_MESSAGE1, 100)
+    font = pygame.font.SysFont(Consts.LOSE_MESSAGE, 100)
     lose_text = font.render(Consts.LOSE_MESSAGE, True, Consts.TEXT_COLOR)
     screen.blit(lose_text, (500,250))
     pygame.display.flip()
@@ -60,7 +60,7 @@ def lose_text():
 
 def win_text():
 
-    font = pygame.font.SysFont(Consts.WELCOME_MESSAGE1, 100)
+    font = pygame.font.SysFont(Consts.WIN_MESSAGE, 100)
     win_text = font.render(Consts.WIN_MESSAGE, True, Consts.TEXT_COLOR)
     screen.blit(win_text, (500,250))
     pygame.display.flip()
