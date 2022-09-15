@@ -36,9 +36,9 @@ def main():
             Screen.create_light_surface()
             Soldier.placing_day_soldier((soldier_x_location, soldier_y_location))
 
-            if (pygame.time.get_ticks() - message_timer) / 1000 < 2:
-                Screen.welcome_text()
-                end_message = True
+        if (pygame.time.get_ticks() - message_timer) / 1000 < 2:
+            Screen.welcome_text()
+            end_message = True
 
         pygame.display.flip()
         pygame.display.update()
