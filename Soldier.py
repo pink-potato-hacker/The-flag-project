@@ -9,7 +9,6 @@ def placing_day_soldier(cords_tuple):
     soldier_img = pygame.transform.scale(soldier_img, (Consts.SIZE * 2, Consts.SIZE * 4))
     Screen.screen.blit(soldier_img, cords_tuple)
 
-
 def placing_night_soldier(cords_tuple):
     soldier_img = pygame.image.load("png files/soldier_nigth.png").convert_alpha()
     soldier_img = pygame.transform.scale(soldier_img, (Consts.SIZE * 2, Consts.SIZE * 4))

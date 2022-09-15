@@ -100,5 +100,9 @@ def fill_colors(matrix):
             color = Consts.BACKGROUND_DARK_COLOR
             pygame.draw.rect(screen, color, (j * Consts.SIZE, i * Consts.SIZE, Consts.SIZE - 1, Consts.SIZE - 1))
 
+def show_boom(cords_tuple):
+    boom_img = pygame.image.load("png files/boom.png").convert_alpha()
+    boom_img = pygame.transform.scale(boom_img, (Consts.SIZE * 4, Consts.SIZE * 4))
+    screen.blit(boom_img, cords_tuple)
 
 pygame.init()

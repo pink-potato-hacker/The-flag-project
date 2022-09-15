@@ -1,6 +1,8 @@
 import Consts
 import random
 
+import Screen
+
 mine_field = []
 mines = [[] for n in range(20)]
 grass = []
@@ -15,7 +17,6 @@ def create_empty_mine_field():
         for col in range(Consts.NUMBER_OF_COLUMNS):
             row.append(Consts.EMPTY)
         mine_field.append(row)
-
 
 def randomize_mines():
     for mine_index in range(20):
@@ -89,6 +90,7 @@ def win_or_lose(coord_x, coord_y):
     # 1 - Lose, 2 - Win
     if mine_field[coord_y // Consts.SIZE + 3][coord_x // Consts.SIZE] == Consts.MINES or \
             mine_field[coord_y // Consts.SIZE + 3][coord_x // Consts.SIZE + 1] == Consts.MINES:
+        Screen.show_boom((coord_x - Consts.SIZE, coord_y + Consts.SIZE))
         return 1
     elif mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE] == Consts.FLAG and \
             mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE + 1] == Consts.FLAG:
