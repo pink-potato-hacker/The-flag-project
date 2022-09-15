@@ -21,11 +21,11 @@ def main():
 
         if (pygame.time.get_ticks() - screen_timer) / 1000 < 0.5 and was_pressed:
             Screen.create_dark_surface()
-            Soldier.placing_soldier((soldier_x_location, soldier_y_location))
+            Soldier.placing_night_soldier((soldier_x_location, soldier_y_location))
         else:
             was_pressed = False
             Screen.create_light_surface()
-            Soldier.placing_soldier(Soldier.moving_soldier(soldier_x_location, soldier_y_location))
+            Soldier.placing_day_soldier(Soldier.moving_soldier(soldier_x_location, soldier_y_location))
             soldier_x_location = Soldier.moving_soldier(soldier_x_location, soldier_y_location)[0]
             soldier_y_location = Soldier.moving_soldier(soldier_x_location, soldier_y_location)[-1]
         pygame.display.flip()

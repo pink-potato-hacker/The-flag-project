@@ -2,8 +2,13 @@ import Consts
 import Screen
 import pygame
 
-def placing_soldier(coords_tuple):
+def placing_day_soldier(coords_tuple):
     soldier_img = pygame.image.load("png files/soldier.png").convert_alpha()
+    soldier_img = pygame.transform.scale(soldier_img, (Consts.SIZE * 2, Consts.SIZE * 4))
+    Screen.screen.blit(soldier_img, coords_tuple)
+
+def placing_night_soldier(coords_tuple):
+    soldier_img = pygame.image.load("png files/soldier_nigth.png").convert_alpha()
     soldier_img = pygame.transform.scale(soldier_img, (Consts.SIZE * 2, Consts.SIZE * 4))
     Screen.screen.blit(soldier_img, coords_tuple)
 
