@@ -2,6 +2,7 @@ import pygame
 import MineField
 import Consts
 import Screen
+import Soldier
 
 def main():
     pygame.init()
