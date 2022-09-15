@@ -4,6 +4,7 @@ import Consts
 import Screen
 import Soldier
 
+
 def main():
     pygame.init()
 
@@ -11,18 +12,18 @@ def main():
     was_pressed = False
     soldier_x_location = Consts.SOLIDER_STARTING_PLACE[0]
     soldier_y_location = Consts.SOLIDER_STARTING_PLACE[-1]
-    
+
     while True:
 
-        if (pygame.time.get_ticks() - screen_timer)/1000 < 0.5 and was_pressed:
+        if (pygame.time.get_ticks() - screen_timer) / 1000 < 0.5 and was_pressed:
             Screen.create_dark_surface()
-            Solider.placing_soldier((soldier_x_location, soldier_y_location))
+            Soldier.placing_soldier((soldier_x_location, soldier_y_location))
         else:
             was_pressed = False
             Screen.create_light_surface()
-            Solider.placing_soldier(Solider.moving_soldier(soldier_x_location,soldier_y_location))
-            soldier_x_location = Solider.moving_soldier(soldier_x_location,soldier_y_location)[0]
-            soldier_y_location = Solider.moving_soldier(soldier_x_location,soldier_y_location)[-1]
+            Soldier.placing_soldier(Soldier.moving_soldier(soldier_x_location, soldier_y_location))
+            soldier_x_location = Soldier.moving_soldier(soldier_x_location, soldier_y_location)[0]
+            soldier_y_location = Soldier.moving_soldier(soldier_x_location, soldier_y_location)[-1]
         pygame.display.flip()
         pygame.display.update()
 
