@@ -29,7 +29,7 @@ def create_light_surface():
     for flower_index in range(10):
         screen.blit(flower_img, MineField.flower[flower_index])
 
-    flag_img = pygame.image.load("png files/flag.png").convert_alpha()
+    flag_img = pygame.image.load("png files/prideflag.png").convert_alpha()
     flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 4, Consts.SIZE * 3))
     screen.blit(flag_img, (
         Consts.NUMBER_OF_COLUMNS * Consts.SIZE - 4 * Consts.SIZE,
@@ -70,7 +70,7 @@ def create_dark_surface():
         y = MineField.mines[mine_index][0] * Consts.SIZE
         screen.blit(mine_img, (x, y))
 
-    flag_img = pygame.image.load("png files/flag.png").convert_alpha()
+    flag_img = pygame.image.load("png files/prideflag.png").convert_alpha()
     flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 4, Consts.SIZE * 3))
     screen.blit(flag_img, (
         Consts.NUMBER_OF_COLUMNS * Consts.SIZE - 4 * Consts.SIZE,

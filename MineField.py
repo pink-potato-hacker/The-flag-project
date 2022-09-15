@@ -39,14 +39,14 @@ def randomize_grass():
         rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
         grass.append((rnd_x, rnd_y))
 
-        
+
 def randomize_flower():
     for flower_index in range(20):
         rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * 25)
         rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
         flower.append((rnd_x, rnd_y))
-        
-        
+
+
 def put_flag():
     for row in range(21, 25):
         for col in range(46, 50):
