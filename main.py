@@ -1,13 +1,14 @@
 import pygame
 import MineField
 import Consts
+import Music
 import Screen
 import Soldier
 
 
 def main():
     pygame.init()
-
+    Music.background_music()
     win_or_lose = 0
     screen_timer = 0
     message_timer = pygame.time.get_ticks()
