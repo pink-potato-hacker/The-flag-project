@@ -32,7 +32,6 @@ def create_light_surface():
     text2 = font.render(Consts.WELCOME_MESSAGE2, True, Consts.TEXT_COLOR)
     screen.blit(text1, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3, 0))
     screen.blit(text2, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3 + 100, 35))
-    pygame.display.update()
 
 
 def create_dark_surface():
