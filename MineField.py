@@ -18,6 +18,11 @@ def randomize_mines():
     for mine_index in range(20):
         rnd_row = random.randint(0, 24)
         rnd_col = random.randint(0, 46)
+
+        while (rnd_row <= 3 and rnd_col <= 2) or (rnd_row >= 22 and rnd_col >= 45):
+            rnd_row = random.randint(0, 24)
+            rnd_col = random.randint(0, 46)
+
         mines[mine_index].append(rnd_row)
 
         for i in range(3):
@@ -32,8 +37,8 @@ def randomize_grass():
         grass.append((rnd_x, rnd_y))
 
 def put_flag():
-    for row in range(21, 24):
-        for col in (46, 50):
+    for row in range(21, 25):
+        for col in range(46, 50):
             mine_field[row][col] = Consts.FLAG
 
 create_empty_mine_field()

@@ -27,6 +27,12 @@ def create_light_surface():
     flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 4, Consts.SIZE * 3))
     screen.blit(flag_img, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE - 4 * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE - 3 * Consts.SIZE))
 
+    font = pygame.font.SysFont(Consts.WELCOME_MESSAGE1, 35)
+    text1 = font.render(Consts.WELCOME_MESSAGE1, True, Consts.TEXT_COLOR)
+    text2 = font.render(Consts.WELCOME_MESSAGE2, True, Consts.TEXT_COLOR)
+    screen.blit(text1, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3, 0))
+    screen.blit(text2, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3 + 100, 35))
+
 
 def create_dark_surface():
     # Set the screen size
@@ -63,5 +69,3 @@ def fill_colors(matrix):
 
 
 pygame.init()
-
-create_light_surface()
