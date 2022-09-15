@@ -18,6 +18,7 @@ def create_empty_mine_field():
             row.append(Consts.EMPTY)
         mine_field.append(row)
 
+
 def randomize_mines():
     for mine_index in range(20):
         rnd_row = random.randint(3, 24)
@@ -60,25 +61,15 @@ def put_solider_in_matrix(coord_x, coord_y):
 
     for x_index in range(len(mine_field)):
         for y_index in range(len(mine_field[0])):
-            if mine_field[x_index][y_index] == Consts.SOLIDER_BODY:
+            if (mine_field[x_index][y_index] == Consts.SOLIDER_BODY) or (
+                    mine_field[x_index][y_index] == Consts.SOLIDER_LEGS):
                 mine_field[x_index][y_index] = Consts.EMPTY
-            elif mine_field[x_index][y_index] == Consts.SOLIDER_LEGS:
-                mine_field[x_index][y_index] = Consts.EMPTY
 
-    if mine_field[row][col] != Consts.MINES and mine_field[row][col + 1] != Consts.MINES:
-        if mine_field[row][col] != Consts.FLAG and mine_field[row][col + 1] != Consts.FLAG:
-            mine_field[row][col] = Consts.SOLIDER_BODY
-            mine_field[row][col + 1] = Consts.SOLIDER_BODY
-
-    if mine_field[row + 1][col] != Consts.MINES and mine_field[row + 1][col + 1] != Consts.MINES:
-        if mine_field[row + 1][col] != Consts.FLAG and mine_field[row + 1][col + 1] != Consts.FLAG:
-            mine_field[row + 1][col] = Consts.SOLIDER_BODY
-            mine_field[row + 1][col + 1] = Consts.SOLIDER_BODY
-
-    if mine_field[row + 2][col] != Consts.MINES and mine_field[row + 2][col + 1] != Consts.MINES:
-        if mine_field[row + 2][col] != Consts.FLAG and mine_field[row + 2][col + 1] != Consts.FLAG:
-            mine_field[row + 2][col] = Consts.SOLIDER_BODY
-            mine_field[row + 2][col + 1] = Consts.SOLIDER_BODY
+    for i in range(3):
+        if mine_field[row + i][col] != Consts.MINES and mine_field[row + i][col + 1] != Consts.MINES:
+            if mine_field[row + i][col] != Consts.FLAG and mine_field[row + i][col + 1] != Consts.FLAG:
+                mine_field[row + i][col] = Consts.SOLIDER_BODY
+                mine_field[row + i][col + 1] = Consts.SOLIDER_BODY
 
     if mine_field[row + 3][col] != Consts.MINES and mine_field[row + 3][col + 1] != Consts.MINES:
         if mine_field[row + 3][col] != Consts.FLAG and mine_field[row + 3][col + 1] != Consts.FLAG:

@@ -5,8 +5,8 @@ import Music
 import Screen
 import Soldier
 
-def main():
 
+def main():
     pygame.init()
     Music.background_music()
     win_or_lose = 0
@@ -69,14 +69,14 @@ def main():
         MineField.put_solider_in_matrix(soldier_x_location, soldier_y_location)
 
         if win_or_lose != 0:
-            message_timer2 = pygame.time.get_ticks()
+            message_won_lose_timer = pygame.time.get_ticks()
             if win_or_lose == 2:
-                while (pygame.time.get_ticks() - message_timer2) / 1000 < 3:
+                while (pygame.time.get_ticks() - message_won_lose_timer) / 1000 < 3:
                     Screen.win_text()
                 break
 
             elif win_or_lose == 1:
-                while (pygame.time.get_ticks() - message_timer2) / 1000 < 3:
+                while (pygame.time.get_ticks() - message_won_lose_timer) / 1000 < 3:
                     Screen.lose_text()
                 break
 
