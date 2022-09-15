@@ -1,10 +1,8 @@
 import pygame
-import time
 import MineField
 import Consts
 
 screen = pygame.display.set_mode((Consts.NUMBER_OF_COLUMNS * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE))
-first_time = True
 
 
 # dark_surface
@@ -25,13 +23,12 @@ def create_light_surface():
     for grass_index in range(20):
         screen.blit(grass_img, MineField.grass[grass_index])
 
-        
     flower_img = pygame.image.load("png files/flower.png").convert_alpha()
     flower_img = pygame.transform.scale(flower_img, (Consts.SIZE * 2, Consts.SIZE * 3))
+
     for flower_index in range(10):
-        screen.blit(flower_img, MineField.flower[flower_index])    
-        
-        
+        screen.blit(flower_img, MineField.flower[flower_index])
+
     flag_img = pygame.image.load("png files/flag.png").convert_alpha()
     flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 4, Consts.SIZE * 3))
     screen.blit(flag_img, (
@@ -40,19 +37,17 @@ def create_light_surface():
 
 
 def welcome_text():
-    global first_time
 
     font = pygame.font.SysFont(Consts.WELCOME_MESSAGE1, 35)
     text1 = font.render(Consts.WELCOME_MESSAGE1, True, Consts.TEXT_COLOR)
     text2 = font.render(Consts.WELCOME_MESSAGE2, True, Consts.TEXT_COLOR)
 
-    if first_time:
-        screen.blit(text1, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3, 0))
-        screen.blit(text2, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3 + 100, 35))
-        first_time = False
+    screen.blit(text1, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3, 0))
+    screen.blit(text2, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3 + 100, 35))
 
-        pygame.display.flip()
-        pygame.display.update()
+    pygame.display.flip()
+    pygame.display.update()
+
 
 def create_dark_surface():
     # Set the screen size
