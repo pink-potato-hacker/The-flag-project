@@ -51,12 +51,12 @@ def main():
                     screen_timer = pygame.time.get_ticks()
                     was_pressed = True
 
-                elif event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN] and not moved:
+                elif event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN] and not moved and not was_pressed:
                     soldier_x_location, soldier_y_location = Soldier.moving_soldier(soldier_x_location,
                                                                                     soldier_y_location, event.key)
 
                     moved = True
-            elif event.type == pygame.KEYUP:
+            elif event.type == pygame.KEYUP and not was_pressed:
                 if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN]:
                     moved = False
 
