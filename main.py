@@ -65,12 +65,14 @@ def main():
         win_or_lose = MineField.what_happned(soldier_x_location, soldier_y_location)
         MineField.put_solider_in_matrix(soldier_x_location, soldier_y_location)
         if win_or_lose != 0:
-            break
-
-    if win_or_lose == 2:
-        print("win")
-    else:
-        print("lose")
+            if win_or_lose == 2:
+                while (pygame.time.get_ticks() - screen_timer) / 1000 < 3:
+                    Screen.lose_text()
+                break
+            elif win_or_lose == 1:
+                while (pygame.time.get_ticks() - screen_timer) / 1000 < 3:
+                    Screen.lose_text()
+                break
 
 if __name__ == '__main__':
     main()

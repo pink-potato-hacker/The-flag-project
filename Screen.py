@@ -1,6 +1,7 @@
 import pygame
 import MineField
 import Consts
+import main
 
 screen = pygame.display.set_mode((Consts.NUMBER_OF_COLUMNS * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE))
 
@@ -45,6 +46,23 @@ def welcome_text():
     screen.blit(text1, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3, 0))
     screen.blit(text2, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3 + 100, 35))
 
+    pygame.display.flip()
+    pygame.display.update()
+
+
+def lose_text():
+
+    font = pygame.font.SysFont(Consts.WELCOME_MESSAGE1, 100)
+    lose_text = font.render(Consts.LOSE_MESSAGE, True, Consts.TEXT_COLOR)
+    screen.blit(lose_text, (500,250))
+    pygame.display.flip()
+    pygame.display.update()
+
+def win_text():
+
+    font = pygame.font.SysFont(Consts.WELCOME_MESSAGE1, 100)
+    win_text = font.render(Consts.WIN_MESSAGE, True, Consts.TEXT_COLOR)
+    screen.blit(win_text, (500,250))
     pygame.display.flip()
     pygame.display.update()
 
