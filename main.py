@@ -5,7 +5,6 @@ import Music
 import Screen
 import Soldier
 
-
 def main():
 
     pygame.init()
@@ -37,7 +36,7 @@ def main():
             Screen.create_light_surface()
             Soldier.placing_day_soldier((soldier_x_location, soldier_y_location))
 
-            while (pygame.time.get_ticks() - message_timer) / 1000 < 2:
+            if (pygame.time.get_ticks() - message_timer) / 1000 < 2:
                 Screen.welcome_text()
                 end_message = True
 
