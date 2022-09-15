@@ -14,7 +14,7 @@ def main():
     was_pressed = False
 
     soldier_x_location = Consts.SOLIDER_STARTING_PLACE[0]
-    soldier_y_location = Consts.SOLIDER_STARTING_PLACE[-1]
+    soldier_y_location = Consts.SOLIDER_STARTING_PLACE[1]
 
     MineField.create_empty_mine_field()
     MineField.randomize_mines()
