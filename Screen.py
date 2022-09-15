@@ -38,7 +38,6 @@ def create_light_surface():
 
 
 def welcome_text():
-
     font = pygame.font.SysFont(Consts.WELCOME_MESSAGE1, 35)
     text1 = font.render(Consts.WELCOME_MESSAGE1, True, Consts.TEXT_COLOR)
     text2 = font.render(Consts.WELCOME_MESSAGE2, True, Consts.TEXT_COLOR)
@@ -51,18 +50,17 @@ def welcome_text():
 
 
 def lose_text():
-
     font = pygame.font.SysFont(Consts.LOSE_MESSAGE, 100)
     lose_text = font.render(Consts.LOSE_MESSAGE, True, Consts.TEXT_COLOR)
-    screen.blit(lose_text, (500,250))
+    screen.blit(lose_text, (500, 250))
     pygame.display.flip()
     pygame.display.update()
 
-def win_text():
 
+def win_text():
     font = pygame.font.SysFont(Consts.WIN_MESSAGE, 100)
     win_text = font.render(Consts.WIN_MESSAGE, True, Consts.TEXT_COLOR)
-    screen.blit(win_text, (500,250))
+    screen.blit(win_text, (500, 250))
     pygame.display.flip()
     pygame.display.update()
 
@@ -101,5 +99,6 @@ def fill_colors(matrix):
         for j in range(Consts.NUMBER_OF_COLUMNS):
             color = Consts.BACKGROUND_DARK_COLOR
             pygame.draw.rect(screen, color, (j * Consts.SIZE, i * Consts.SIZE, Consts.SIZE - 1, Consts.SIZE - 1))
+
 
 pygame.init()

@@ -7,6 +7,7 @@ import Soldier
 
 
 def main():
+
     pygame.init()
     Music.background_music()
     win_or_lose = 0
@@ -38,6 +39,7 @@ def main():
 
             while (pygame.time.get_ticks() - message_timer) / 1000 < 2:
                 Screen.welcome_text()
+                end_message = True
 
         pygame.display.flip()
         pygame.display.update()
@@ -53,7 +55,9 @@ def main():
                     screen_timer = pygame.time.get_ticks()
                     was_pressed = True
 
-                elif event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN] and not moved and not was_pressed:
+                elif event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT,
+                                   pygame.K_DOWN] and not moved and not was_pressed:
+
                     soldier_x_location, soldier_y_location = Soldier.moving_soldier(soldier_x_location,
                                                                                     soldier_y_location, event.key)
 
@@ -64,15 +68,19 @@ def main():
 
         win_or_lose = MineField.what_happned(soldier_x_location, soldier_y_location)
         MineField.put_solider_in_matrix(soldier_x_location, soldier_y_location)
+
         if win_or_lose != 0:
+            message_timer2 = pygame.time.get_ticks()
             if win_or_lose == 2:
-                while (pygame.time.get_ticks() - screen_timer) / 1000 < 3:
+                while (pygame.time.get_ticks() - message_timer2) / 1000 < 3:
                     Screen.win_text()
                 break
+
             elif win_or_lose == 1:
-                while (pygame.time.get_ticks() - screen_timer) / 1000 < 3:
+                while (pygame.time.get_ticks() - message_timer2) / 1000 < 3:
                     Screen.lose_text()
                 break
+
 
 if __name__ == '__main__':
     main()
