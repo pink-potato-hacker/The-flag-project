@@ -27,7 +27,7 @@ def create_light_surface():
         
     flower_img = pygame.image.load("png files/flower.png").convert_alpha()
     flower_img = pygame.transform.scale(flower_img, (Consts.SIZE * 2, Consts.SIZE * 3))
-    for flower_index in range(20):
+    for flower_index in range(10):
         screen.blit(flower_img, MineField.flower[flower_index])    
         
         
