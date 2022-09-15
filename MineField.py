@@ -6,6 +6,7 @@ import Screen
 mine_field = []
 mines = [[] for n in range(20)]
 grass = []
+grass1 = []
 flower = []
 
 
@@ -41,7 +42,11 @@ def randomize_grass():
         rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
         grass.append((rnd_x, rnd_y))
 
-
+def randomize_grass1():
+    for grass_index in range(10):
+        rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * 25)
+        rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
+        grass1.append((rnd_x, rnd_y))
 def randomize_flower():
     for flower_index in range(20):
         rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * 25)

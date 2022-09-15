@@ -21,6 +21,7 @@ def main():
     MineField.create_empty_mine_field()
     MineField.randomize_mines()
     MineField.randomize_grass()
+    MineField.randomize_grass1()
     MineField.randomize_flower()
     MineField.put_flag()
 
