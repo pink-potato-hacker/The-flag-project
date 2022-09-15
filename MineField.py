@@ -51,9 +51,3 @@ def put_flag():
     for row in range(21, 25):
         for col in range(46, 50):
             mine_field[row][col] = Consts.FLAG
-
-
-create_empty_mine_field()
-randomize_mines()
-randomize_grass()
-randomize_flower()

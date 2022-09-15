@@ -4,6 +4,7 @@ import MineField
 import Consts
 
 screen = pygame.display.set_mode((Consts.NUMBER_OF_COLUMNS * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE))
+first_time = True
 
 
 # dark_surface
@@ -39,12 +40,19 @@ def create_light_surface():
 
 
 def welcome_text():
+    global first_time
+
     font = pygame.font.SysFont(Consts.WELCOME_MESSAGE1, 35)
     text1 = font.render(Consts.WELCOME_MESSAGE1, True, Consts.TEXT_COLOR)
     text2 = font.render(Consts.WELCOME_MESSAGE2, True, Consts.TEXT_COLOR)
-    screen.blit(text1, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3, 0))
-    screen.blit(text2, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3 + 100, 35))
 
+    if first_time:
+        screen.blit(text1, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3, 0))
+        screen.blit(text2, (Consts.NUMBER_OF_COLUMNS * Consts.SIZE / 3 + 100, 35))
+        first_time = False
+
+        pygame.display.flip()
+        pygame.display.update()
 
 def create_dark_surface():
     # Set the screen size
