@@ -66,7 +66,7 @@ def main():
                 if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN]:
                     moved = False
 
-        win_or_lose = MineField.what_happned(soldier_x_location, soldier_y_location)
+        win_or_lose = MineField.win_or_lose(soldier_x_location, soldier_y_location)
         MineField.put_solider_in_matrix(soldier_x_location, soldier_y_location)
 
         if win_or_lose != 0:
