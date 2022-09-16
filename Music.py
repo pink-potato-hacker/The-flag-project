@@ -13,7 +13,7 @@ def bomb_sound():
     mixer.Sound.play(bomb_sound)
 
 
-def victory_soud():
+def victory_sound():
     mixer.init()
     mixer.music.stop()
     victory_sound = mixer.Sound("Music File/Victory Sound Effect.wav")

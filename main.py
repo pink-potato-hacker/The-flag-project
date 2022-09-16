@@ -5,7 +5,6 @@ import Music
 import Screen
 import Soldier
 
-
 def main():
     global event
     pygame.init()
@@ -75,7 +74,7 @@ def main():
             if win_or_lose == 2:
                 while (pygame.time.get_ticks() - message_won_lose_timer) / 1000 < 3:
                     Screen.win_text()
-                    Music.victory_soud()
+                    Music.victory_sound()
                 break
 
             elif win_or_lose == 1:
