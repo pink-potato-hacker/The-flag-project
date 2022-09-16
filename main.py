@@ -7,9 +7,9 @@ import Soldier
 
 
 def main():
+    global event
     pygame.init()
     Music.background_music()
-    win_or_lose = 0
     screen_timer = 0
     message_timer = pygame.time.get_ticks()
 
@@ -21,7 +21,7 @@ def main():
     MineField.create_empty_mine_field()
     MineField.randomize_mines()
     MineField.randomize_grass()
-    MineField.randomize_grass1()
+    MineField.randomize_bushes()
     MineField.randomize_flower()
     MineField.put_flag()
 
@@ -39,7 +39,6 @@ def main():
 
         if (pygame.time.get_ticks() - message_timer) / 1000 < 2:
             Screen.welcome_text()
-            end_message = True
 
         pygame.display.flip()
         pygame.display.update()
@@ -77,6 +76,7 @@ def main():
                 break
 
             elif win_or_lose == 1:
+                Soldier.placing_dead_solider((soldier_x_location, soldier_y_location))
                 while (pygame.time.get_ticks() - message_won_lose_timer) / 1000 < 3:
                     Screen.lose_text()
                 break

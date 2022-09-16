@@ -1,12 +1,11 @@
 import Consts
 import random
-
 import Screen
 
 mine_field = []
 mines = [[] for n in range(20)]
 grass = []
-grass1 = []
+bushes = []
 flower = []
 
 
@@ -42,11 +41,14 @@ def randomize_grass():
         rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
         grass.append((rnd_x, rnd_y))
 
-def randomize_grass1():
+
+def randomize_bushes():
     for grass_index in range(10):
         rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * 25)
         rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
-        grass1.append((rnd_x, rnd_y))
+        bushes.append((rnd_x, rnd_y))
+
+
 def randomize_flower():
     for flower_index in range(20):
         rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * 25)
@@ -70,16 +72,14 @@ def put_solider_in_matrix(coord_x, coord_y):
                     mine_field[x_index][y_index] == Consts.SOLIDER_LEGS):
                 mine_field[x_index][y_index] = Consts.EMPTY
 
-    for i in range(3):
+    for i in range(4):
         if mine_field[row + i][col] != Consts.MINES and mine_field[row + i][col + 1] != Consts.MINES:
             if mine_field[row + i][col] != Consts.FLAG and mine_field[row + i][col + 1] != Consts.FLAG:
                 mine_field[row + i][col] = Consts.SOLIDER_BODY
                 mine_field[row + i][col + 1] = Consts.SOLIDER_BODY
-
-    if mine_field[row + 3][col] != Consts.MINES and mine_field[row + 3][col + 1] != Consts.MINES:
-        if mine_field[row + 3][col] != Consts.FLAG and mine_field[row + 3][col + 1] != Consts.FLAG:
-            mine_field[row + 3][col] = Consts.SOLIDER_LEGS
-            mine_field[row + 3][col + 1] = Consts.SOLIDER_LEGS
+            if i == 3:
+                mine_field[row + i][col] = Consts.SOLIDER_LEGS
+                mine_field[row + i][col + 1] = Consts.SOLIDER_LEGS
 
 
 def win_or_lose(coord_x, coord_y):
@@ -88,7 +88,9 @@ def win_or_lose(coord_x, coord_y):
             mine_field[coord_y // Consts.SIZE + 3][coord_x // Consts.SIZE + 1] == Consts.MINES:
         Screen.show_boom((coord_x - Consts.SIZE, coord_y + Consts.SIZE))
         return 1
+
     elif mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE] == Consts.FLAG and \
             mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE + 1] == Consts.FLAG:
         return 2
+
     return 0

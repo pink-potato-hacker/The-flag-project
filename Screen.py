@@ -1,14 +1,9 @@
 import pygame
 import MineField
 import Consts
-import main
 
 screen = pygame.display.set_mode((Consts.NUMBER_OF_COLUMNS * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE))
 
-
-# dark_surface
-# light_surface
-# soldier_flag_surface
 
 def create_light_surface():
     # Set the screen size
@@ -31,8 +26,8 @@ def create_light_surface():
     grass_img = pygame.image.load("png files/grass1.png").convert_alpha()
     grass_img = pygame.transform.scale(grass_img, (Consts.SIZE * 2, Consts.SIZE * 2))
 
-    for grass_index in range(5):
-        screen.blit(grass_img, MineField.grass1[grass_index])
+    for bush_index in range(5):
+        screen.blit(grass_img, MineField.bushes[bush_index])
 
     flower_img = pygame.image.load("png files/flower.png").convert_alpha()
     flower_img = pygame.transform.scale(flower_img, (Consts.SIZE * 2, Consts.SIZE * 2))
@@ -110,9 +105,11 @@ def fill_colors(matrix):
             color = Consts.BACKGROUND_DARK_COLOR
             pygame.draw.rect(screen, color, (j * Consts.SIZE, i * Consts.SIZE, Consts.SIZE - 1, Consts.SIZE - 1))
 
+
 def show_boom(cords_tuple):
     boom_img = pygame.image.load("png files/boom.png").convert_alpha()
     boom_img = pygame.transform.scale(boom_img, (Consts.SIZE * 4, Consts.SIZE * 4))
     screen.blit(boom_img, cords_tuple)
+
 
 pygame.init()
