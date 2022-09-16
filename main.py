@@ -81,6 +81,7 @@ def main():
                 Soldier.placing_dead_solider((soldier_x_location, soldier_y_location))
                 while (pygame.time.get_ticks() - message_won_lose_timer) / 1000 < 3:
                     Screen.lose_text()
+                    Music.bomb_sound()
                 break
 
 
