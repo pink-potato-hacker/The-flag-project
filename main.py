@@ -75,6 +75,7 @@ def main():
             if win_or_lose == 2:
                 while (pygame.time.get_ticks() - message_won_lose_timer) / 1000 < 3:
                     Screen.win_text()
+                    Music.victory_soud()
                 break
 
             elif win_or_lose == 1:
