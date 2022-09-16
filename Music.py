@@ -7,5 +7,5 @@ def background_music():
 
 def bomb_sound():
     mixer.music.stop()
-    bomb_sound = mixer.Sound("Music File/Loud Explosion Sound Effect (HD) (3).mp3")
+    bomb_sound = mixer.Sound("Music File/Explosion Sound Effect.mp3")
     mixer.Sound.play(bomb_sound)
