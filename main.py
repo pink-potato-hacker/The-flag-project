@@ -65,6 +65,8 @@ def main():
                 if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN]:
                     moved = False
 
+        Screen.create_light_surface()
+        Soldier.placing_day_soldier((soldier_x_location, soldier_y_location))
         win_or_lose = MineField.win_or_lose(soldier_x_location, soldier_y_location)
         MineField.put_solider_in_matrix(soldier_x_location, soldier_y_location)
 

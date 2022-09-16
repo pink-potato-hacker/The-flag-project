@@ -17,7 +17,7 @@ def placing_night_soldier(cords_tuple):
 
 def placing_dead_solider(cords_tuple):
     dead_img = pygame.image.load("png files/injury.png")
-    dead_img = pygame.transform.scale(dead_img, (Consts.SIZE * 3, Consts.SIZE * 5))
+    dead_img = pygame.transform.scale(dead_img, (Consts.SIZE * 2, Consts.SIZE * 4))
     Screen.screen.blit(dead_img, cords_tuple)
 
 
