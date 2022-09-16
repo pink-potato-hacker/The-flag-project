@@ -17,17 +17,17 @@ def create_light_surface():
     background_img = pygame.transform.scale(background_img, (Consts.SIZE * Consts.NUMBER_OF_COLUMNS, Consts.SIZE * Consts.NUMBER_OF_ROWS))
     screen.blit(background_img, (0, 0))
 
+    bush_img = pygame.image.load("png files/bush.png").convert_alpha()
+    bush_img = pygame.transform.scale(bush_img, (Consts.SIZE * 4, Consts.SIZE * 4))
+
+    for bush_index in range(20):
+        screen.blit(bush_img, MineField.bushes[bush_index])
+
     grass_img = pygame.image.load("png files/grass.png").convert_alpha()
-    grass_img = pygame.transform.scale(grass_img, (Consts.SIZE * 4, Consts.SIZE * 4))
-
-    for grass_index in range(20):
-        screen.blit(grass_img, MineField.grass[grass_index])
-
-    grass_img = pygame.image.load("png files/grass1.png").convert_alpha()
     grass_img = pygame.transform.scale(grass_img, (Consts.SIZE * 2, Consts.SIZE * 2))
 
-    for bush_index in range(5):
-        screen.blit(grass_img, MineField.bushes[bush_index])
+    for grass_index in range(5):
+        screen.blit(grass_img, MineField.grass[grass_index])
 
     flower_img = pygame.image.load("png files/flower.png").convert_alpha()
     flower_img = pygame.transform.scale(flower_img, (Consts.SIZE * 2, Consts.SIZE * 2))

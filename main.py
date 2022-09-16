@@ -48,7 +48,7 @@ def main():
             # if user wants to QUIT, close pygame
             if event.type == pygame.QUIT:
                 pygame.quit()
-                return
+                return[]
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     screen_timer = pygame.time.get_ticks()

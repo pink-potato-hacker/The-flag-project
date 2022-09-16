@@ -35,18 +35,18 @@ def randomize_mines():
             mines[mine_index].append(rnd_col + i)
 
 
-def randomize_grass():
+def randomize_bushes():
     for grass_index in range(20):
         rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * 25)
         rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
-        grass.append((rnd_x, rnd_y))
+        bushes.append((rnd_x, rnd_y))
 
 
-def randomize_bushes():
+def randomize_grass():
     for grass_index in range(10):
         rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * 25)
         rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
-        bushes.append((rnd_x, rnd_y))
+        grass.append((rnd_x, rnd_y))
 
 
 def randomize_flower():
