@@ -2,7 +2,6 @@ import Consts
 import Screen
 import pygame
 
-
 def placing_day_soldier(cords_tuple):
     soldier_day_img = pygame.image.load("png files/soldier.png")
     soldier_day_img = pygame.transform.scale(soldier_day_img, (Consts.SIZE * 2, Consts.SIZE * 4))

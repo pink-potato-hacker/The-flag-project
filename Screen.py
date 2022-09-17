@@ -36,10 +36,10 @@ def create_light_surface():
         screen.blit(flower_img, MineField.flower[flower_index])
 
     flag_img = pygame.image.load("png files/flag.png").convert_alpha()
-    flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 4, Consts.SIZE * 3))
+    flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 4, Consts.SIZE * 4))
     screen.blit(flag_img, (
         Consts.NUMBER_OF_COLUMNS * Consts.SIZE - 4 * Consts.SIZE,
-        Consts.NUMBER_OF_ROWS * Consts.SIZE - 3 * Consts.SIZE))
+        Consts.NUMBER_OF_ROWS * Consts.SIZE - 4 * Consts.SIZE))
 
 
 def welcome_text():
@@ -92,10 +92,10 @@ def create_dark_surface():
         screen.blit(mine_img, (x, y))
 
     flag_img = pygame.image.load("png files/flag.png").convert_alpha()
-    flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 4, Consts.SIZE * 3))
+    flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 4, Consts.SIZE * 4))
     screen.blit(flag_img, (
         Consts.NUMBER_OF_COLUMNS * Consts.SIZE - 4 * Consts.SIZE,
-        Consts.NUMBER_OF_ROWS * Consts.SIZE - 3 * Consts.SIZE))
+        Consts.NUMBER_OF_ROWS * Consts.SIZE - 4 * Consts.SIZE))
 
 
 def fill_colors(matrix):
@@ -111,5 +111,3 @@ def show_boom(cords_tuple):
     boom_img = pygame.transform.scale(boom_img, (Consts.SIZE * 4, Consts.SIZE * 4))
     screen.blit(boom_img, cords_tuple)
 
-
-pygame.init()

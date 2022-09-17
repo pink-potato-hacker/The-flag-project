@@ -57,7 +57,7 @@ def randomize_flower():
 
 
 def put_flag():
-    for row in range(21, 25):
+    for row in range(21, 24):
         for col in range(46, 50):
             mine_field[row][col] = Consts.FLAG
 
