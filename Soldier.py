@@ -35,5 +35,4 @@ def moving_soldier(soldier_x_location, soldier_y_location, key):
         soldier_y_location += Consts.SIZE
         if soldier_y_location + Consts.SIZE > Consts.NUMBER_OF_ROWS * Consts.SIZE - Consts.SIZE * 3:
             soldier_y_location -= Consts.SIZE
-
     return soldier_x_location, soldier_y_location
