@@ -6,7 +6,7 @@ mine_field = []
 mines = [[] for n in range(Consts.NUMBER_OF_MINES)]
 grass = []
 bushes = []
-flower = []
+flowers = []
 
 
 def create_empty_mine_field():
@@ -75,8 +75,6 @@ def put_solider_in_matrix(coord_x, coord_y):
                 mine_field[row + i][col] = Consts.SOLIDER_LEGS
                 mine_field[row + i][col + 1] = Consts.SOLIDER_LEGS
 
-    print(mine_field)
-
 
 def win_or_lose(coord_x, coord_y):
     # 1 - Lose, 2 - Win
@@ -90,9 +88,9 @@ def win_or_lose(coord_x, coord_y):
             (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE + 1 == 48):
         return 2
     elif (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE == 47) or \
-             (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE == 48) or \
-             (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE == 47) or \
-             (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE == 48):
+            (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE == 48) or \
+            (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE == 47) or \
+            (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE == 48):
         return 2
 
     return 0
