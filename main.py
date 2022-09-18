@@ -5,8 +5,8 @@ import Music
 import Screen
 import Soldier
 
+
 def main():
-    global event
     pygame.init()
     Music.background_music()
     screen_timer = 0
@@ -19,9 +19,7 @@ def main():
 
     MineField.create_empty_mine_field()
     MineField.randomize_mines()
-    MineField.randomize_grass()
-    MineField.randomize_bushes()
-    MineField.randomize_flower()
+    MineField.get_cords_for_elements()
     MineField.put_flag()
 
     while True:
@@ -29,12 +27,12 @@ def main():
 
         if (pygame.time.get_ticks() - screen_timer) / 1000 < 0.5 and was_pressed:
             Screen.create_dark_surface()
-            Soldier.placing_night_soldier((soldier_x_location, soldier_y_location))
+            Soldier.placing_soldier((soldier_x_location, soldier_y_location), 'night')
 
         else:
             was_pressed = False
             Screen.create_light_surface()
-            Soldier.placing_day_soldier((soldier_x_location, soldier_y_location))
+            Soldier.placing_soldier((soldier_x_location, soldier_y_location))
 
         if (pygame.time.get_ticks() - message_timer) / 1000 < 2:
             Screen.welcome_text()
@@ -47,7 +45,7 @@ def main():
             # if user wants to QUIT, close pygame
             if event.type == pygame.QUIT:
                 pygame.quit()
-                return[]
+                return []
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     screen_timer = pygame.time.get_ticks()
@@ -65,7 +63,7 @@ def main():
                     moved = False
 
         Screen.create_light_surface()
-        Soldier.placing_day_soldier((soldier_x_location, soldier_y_location))
+        Soldier.placing_soldier((soldier_x_location, soldier_y_location), 'day')
         win_or_lose = MineField.win_or_lose(soldier_x_location, soldier_y_location)
         MineField.put_solider_in_matrix(soldier_x_location, soldier_y_location)
 
@@ -78,7 +76,7 @@ def main():
                 break
 
             elif win_or_lose == 1:
-                Soldier.placing_dead_solider((soldier_x_location, soldier_y_location))
+                Soldier.placing_soldier((soldier_x_location, soldier_y_location), 'dead')
                 while (pygame.time.get_ticks() - message_won_lose_timer) / 1000 < 3:
                     Screen.lose_text()
                     Music.bomb_sound()

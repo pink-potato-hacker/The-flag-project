@@ -3,15 +3,13 @@ import random
 import Screen
 
 mine_field = []
-mines = [[] for n in range(20)]
+mines = [[] for n in range(Consts.NUMBER_OF_MINES)]
 grass = []
 bushes = []
 flower = []
 
 
 def create_empty_mine_field():
-    global mine_field
-
     for i in range(Consts.NUMBER_OF_ROWS):
         row = []
         for col in range(Consts.NUMBER_OF_COLUMNS):
@@ -20,11 +18,11 @@ def create_empty_mine_field():
 
 
 def randomize_mines():
-    for mine_index in range(20):
+    for mine_index in range(Consts.NUMBER_OF_MINES):
         rnd_row = random.randint(3, 24)
         rnd_col = random.randint(0, 46)
 
-        while (rnd_row <= 3 and rnd_col <= 2) or (rnd_row >= 22 and rnd_col >= 45):
+        while (rnd_row <= 3 and rnd_col <= 1) or (rnd_row >= 22 and rnd_col >= 45):
             rnd_row = random.randint(3, 24)
             rnd_col = random.randint(0, 46)
 
@@ -35,24 +33,20 @@ def randomize_mines():
             mines[mine_index].append(rnd_col + i)
 
 
-def randomize_bushes():
-    for grass_index in range(20):
-        rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * 25)
-        rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
+def get_cords_for_elements():
+    for bush_index in range(Consts.NUMBER_OF_BUSHES):
+        rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * Consts.SIZE)
+        rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * Consts.SIZE)
         bushes.append((rnd_x, rnd_y))
 
-
-def randomize_grass():
-    for grass_index in range(10):
-        rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * 25)
-        rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
+    for grass_index in range(Consts.NUMBER_OF_GRASS):
+        rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * Consts.SIZE)
+        rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * Consts.SIZE)
         grass.append((rnd_x, rnd_y))
 
-
-def randomize_flower():
-    for flower_index in range(20):
-        rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * 25)
-        rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * 25)
+    for flower_index in range(Consts.NUMBER_OF_FLOWERS):
+        rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * Consts.SIZE)
+        rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * Consts.SIZE)
         flower.append((rnd_x, rnd_y))
 
 
@@ -80,6 +74,8 @@ def put_solider_in_matrix(coord_x, coord_y):
             if i == 3:
                 mine_field[row + i][col] = Consts.SOLIDER_LEGS
                 mine_field[row + i][col + 1] = Consts.SOLIDER_LEGS
+
+    print(mine_field)
 
 
 def win_or_lose(coord_x, coord_y):
