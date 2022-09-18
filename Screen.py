@@ -111,3 +111,4 @@ def show_boom(cords_tuple):
     boom_img = pygame.image.load("png files/boom.png").convert_alpha()
     boom_img = pygame.transform.scale(boom_img, (Consts.SIZE * 4, Consts.SIZE * 4))
     screen.blit(boom_img, cords_tuple)
+

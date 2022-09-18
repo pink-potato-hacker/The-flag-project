@@ -6,7 +6,6 @@ import Music
 import Screen
 import Soldier
 
-
 def main():
     pygame.init()
     Music.background_music()
@@ -22,6 +21,7 @@ def main():
     MineField.randomize_mines()
     MineField.get_cords_for_elements()
     MineField.put_flag()
+
 
     while True:
         moved = False
@@ -61,6 +61,7 @@ def main():
 
                     key = Database.key_press_timer()
                     Database.add_elements_to_file(key)
+
 
                     moved = True
             elif event.type == pygame.KEYUP and not was_pressed:

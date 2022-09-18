@@ -1,6 +1,7 @@
 import Consts
 import random
 import Screen
+import copy
 
 mine_field = []
 mines = [[] for n in range(Consts.NUMBER_OF_MINES)]
