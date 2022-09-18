@@ -1,6 +1,7 @@
 import pygame
 import MineField
 import Consts
+import Database
 
 screen = pygame.display.set_mode((Consts.NUMBER_OF_COLUMNS * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE))
 

@@ -43,12 +43,11 @@ def key_press_timer():
 #key_press_time_ms is time of pressing on event.key in milliseconds
 
 
-key_pressed = key_press_timer()
 #less than sec save the game
 save_files = {}
 
 
-def add_elements_to_file():
+def add_elements_to_file(key_pressed):
     if key_pressed % 1 == 0:
         save_files[key_pressed - 0.5] = [MineField.mines,
                                          MineField.flowers,

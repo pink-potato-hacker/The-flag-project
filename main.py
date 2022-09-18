@@ -1,6 +1,6 @@
 import pygame
 
-import Datatbase
+import Database
 import MineField
 import Consts
 import Music
@@ -31,7 +31,6 @@ def main():
         if (pygame.time.get_ticks() - screen_timer) / 1000 < 0.5 and was_pressed:
             Screen.create_dark_surface()
             Soldier.placing_soldier((soldier_x_location, soldier_y_location), 'night')
-
         else:
             was_pressed = False
             Screen.create_light_surface()
