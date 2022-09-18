@@ -1,7 +1,6 @@
 import pandas
 import pygame
 
-
 def key_pressed():
     while True:
         for event in pygame.event.get():
