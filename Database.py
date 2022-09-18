@@ -56,4 +56,4 @@ def add_elements_to_file(key_pressed):
                                          MineField.get_soldier_location()]
 
         data_frame = pandas.DataFrame(save_files)
-        data_frame.to_csv("C:\Users\משתמש\PycharmProjects\The-flag-project\CSV\CSV_data.csv", index=False)
+        data_frame.to_csv("C:/Users/משתמש/PycharmProjects/The-flag-project/CSV/CSV_data.csv", index=False)
