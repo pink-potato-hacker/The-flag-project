@@ -56,6 +56,7 @@ def main():
 
                     soldier_x_location, soldier_y_location = Soldier.moving_soldier(soldier_x_location,
                                                                                     soldier_y_location, event.key)
+                    print(MineField.soldier_location)
 
                     moved = True
             elif event.type == pygame.KEYUP and not was_pressed:

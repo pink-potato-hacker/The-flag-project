@@ -8,7 +8,6 @@ grass = []
 bushes = []
 flowers = []
 
-
 def create_empty_mine_field():
     for i in range(Consts.NUMBER_OF_ROWS):
         row = []
@@ -75,7 +74,15 @@ def put_solider_in_matrix(coord_x, coord_y):
                 mine_field[row + i][col] = Consts.SOLIDER_LEGS
                 mine_field[row + i][col + 1] = Consts.SOLIDER_LEGS
 
-
+def get_soldier_location():
+    soldier_location = []
+    for x_index in range(len(mine_field)):
+        for y_index in range(len(mine_field[0])):
+            if mine_field[x_index][y_index] == Consts.SOLIDER_BODY:
+                soldier_location.append((x_index, y_index))
+            if mine_field[x_index][y_index] == Consts.SOLIDER_LEGS:
+                soldier_location.append((x_index, y_index))
+    return soldier_location
 def win_or_lose(coord_x, coord_y):
     # 1 - Lose, 2 - Win
     if mine_field[coord_y // Consts.SIZE + 3][coord_x // Consts.SIZE] == Consts.MINES or \
@@ -95,6 +102,3 @@ def win_or_lose(coord_x, coord_y):
 
     return 0
 
-    # elif mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE] == Consts.FLAG and \
-    #         mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE + 1] == Consts.FLAG:
-    #     return 2

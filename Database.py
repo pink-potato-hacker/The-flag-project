@@ -4,7 +4,6 @@ import MineField
 
 save_files = {}
 
-
 def key_pressed_or_held():
     while True:
         for event in pygame.event.get():
@@ -89,5 +88,9 @@ key_pressed = key_pressed_or_held()
 
 def add_elements_to_file():
     if key_pressed % 1 == 0:
-        save_files[key_pressed - 0.5] = [MineField.mines, MineField.flowers, MineField.bushes, MineField.grass]
+        save_files[key_pressed - 0.5] = [MineField.mines,
+                                         MineField.flowers,
+                                         MineField.bushes,
+                                         MineField.grass,
+                                         MineField.get_soldier_location()]
 
