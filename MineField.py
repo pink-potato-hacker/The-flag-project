@@ -47,7 +47,7 @@ def get_cords_for_elements():
     for flower_index in range(Consts.NUMBER_OF_FLOWERS):
         rnd_x = random.randint(0, Consts.NUMBER_OF_COLUMNS * Consts.SIZE)
         rnd_y = random.randint(0, Consts.NUMBER_OF_ROWS * Consts.SIZE)
-        flower.append((rnd_x, rnd_y))
+        flowers.append((rnd_x, rnd_y))
 
 
 def put_flag():
