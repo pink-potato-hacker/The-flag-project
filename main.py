@@ -1,4 +1,6 @@
 import pygame
+
+import Database
 import MineField
 import Consts
 import Music
