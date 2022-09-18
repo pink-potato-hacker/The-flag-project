@@ -46,11 +46,11 @@ save_files = {}
 
 def add_elements_to_file(key_pressed):
     if key_pressed % 1 == 0:
-        save_files[key_pressed - 0.5] = [MineField.mines,
-                                         MineField.flowers,
-                                         MineField.bushes,
-                                         MineField.grass,
-                                         MineField.get_soldier_location()]
+        save_files[key_pressed] = [MineField.mines,
+                                   MineField.flowers,
+                                   MineField.bushes,
+                                   MineField.grass,
+                                   MineField.get_soldier_location()]
 
         data_frame = pandas.DataFrame(save_files)
         data_frame.to_csv("CSV/CSV_data.csv", index=False)

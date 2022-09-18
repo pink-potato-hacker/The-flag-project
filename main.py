@@ -56,14 +56,14 @@ def main():
 
                     soldier_x_location, soldier_y_location = Soldier.moving_soldier(soldier_x_location,
                                                                                     soldier_y_location, event.key)
+                if event.key in [pygame.K_1, pygame.K_2, pygame.K_3, pygame.K_4, pygame.K_5, pygame.K_6, pygame.K_7,
+                                 pygame.K_8, pygame.K_9]:
+                    print(Database.key_press_timer())
 
                     moved = True
             elif event.type == pygame.KEYUP and not was_pressed:
                 if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN]:
                     moved = False
-
-                if event.key in [pygame.K_1, pygame.K_2, pygame.K_3, pygame.K_4, pygame.K_5, pygame.K_6, pygame.K_7, pygame.K_8, pygame.K_9]:
-                    print(Database.key_press_timer())
 
         Screen.create_light_surface()
         Soldier.placing_soldier((soldier_x_location, soldier_y_location), 'day')
