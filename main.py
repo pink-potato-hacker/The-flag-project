@@ -58,7 +58,9 @@ def main():
                                                                                     soldier_y_location, event.key)
                 if event.key in [pygame.K_1, pygame.K_2, pygame.K_3, pygame.K_4, pygame.K_5, pygame.K_6, pygame.K_7,
                                  pygame.K_8, pygame.K_9]:
-                    print(Database.key_press_timer())
+
+                    key = Database.key_press_timer()
+                    Database.add_elements_to_file(key)
 
                     moved = True
             elif event.type == pygame.KEYUP and not was_pressed:

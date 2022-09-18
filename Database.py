@@ -6,7 +6,7 @@ import pandas
 
 def key_press_timer():
     running = True
-    clock = pygame.time.Clock()
+    clock = pygame.time.get_ticks()
     keys = [
         pygame.K_1,
         pygame.K_2,
@@ -22,18 +22,13 @@ def key_press_timer():
     counters = [0 for _ in keys]
     while running:
         for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                for i, key in enumerate(keys):
-                    if event.key == key:
-                        counters[i] = time.time()
             if event.type == pygame.KEYUP:
                 for i, key in enumerate(keys):
                     if event.key == key:
-                        counters[i] = time.time() - counters[i]
+                        counters[i] = (pygame.time.get_ticks() - clock) - counters[i]
                         times[i] += counters[i]
-                        key_press_time_ms = int(1000 * counters[i])
+                        key_press_time_ms = pygame.time.get_ticks() - clock
                         key_pressed = i + 1
-                        clock.tick(60)
                         return key_pressed, key_press_time_ms // 1000
 
 
@@ -44,13 +39,15 @@ def key_press_timer():
 save_files = {}
 
 
-def add_elements_to_file(key_pressed):
-    if key_pressed % 1 == 0:
+def add_elements_to_file(key_and_time_key_pressed):
+    key_pressed, time_pressed = key_and_time_key_pressed
+
+    if time_pressed <= 1:
         save_files[key_pressed] = [MineField.mines,
                                    MineField.flowers,
                                    MineField.bushes,
                                    MineField.grass,
                                    MineField.get_soldier_location()]
 
-        data_frame = pandas.DataFrame(save_files)
-        data_frame.to_csv("CSV/CSV_data.csv", index=False)
+    data_frame = pandas.DataFrame(save_files)
+    data_frame.to_csv("CSV/CSV_data.csv", index=False)
