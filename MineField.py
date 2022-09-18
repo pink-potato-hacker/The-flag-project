@@ -83,6 +83,7 @@ def get_soldier_location():
             if mine_field[x_index][y_index] == Consts.SOLIDER_LEGS:
                 soldier_location.append((x_index, y_index))
     return soldier_location
+
 def win_or_lose(coord_x, coord_y):
     # 1 - Lose, 2 - Win
     if mine_field[coord_y // Consts.SIZE + 3][coord_x // Consts.SIZE] == Consts.MINES or \

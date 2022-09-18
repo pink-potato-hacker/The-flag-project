@@ -1,7 +1,7 @@
 import MineField
 import pygame
 import time
-
+import pandas
 
 def key_press_timer():
     running = True
@@ -55,3 +55,5 @@ def add_elements_to_file(key_pressed):
                                          MineField.grass,
                                          MineField.get_soldier_location()]
 
+        data_frame = pandas.DataFrame(save_files)
+        data_frame.to_csv("C:\Users\משתמש\PycharmProjects\The-flag-project\CSV\CSV_data.csv", index=False)
