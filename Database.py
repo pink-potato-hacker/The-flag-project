@@ -16,7 +16,6 @@ def key_press_timer():
         pygame.K_7,
         pygame.K_8,
         pygame.K_9,
-
     ]
     times = [0 for _ in keys]
     counters = [0 for _ in keys]
@@ -37,8 +36,8 @@ def key_press_timer():
                         times[i] += counters[i]
                         key_press_time_ms = int(1000 * counters[i])
                         key_pressed = i+1
-            clock.tick(60)
-    return (key_pressed,key_press_time_ms)
+                        clock.tick(60)
+                        return (key_pressed,key_press_time_ms)
 
 #key_press_time_ms is time of pressing on event.key in milliseconds
 
