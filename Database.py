@@ -3,6 +3,7 @@ import pygame
 import time
 import pandas
 
+
 def key_press_timer():
     running = True
     clock = pygame.time.Clock()
@@ -21,10 +22,6 @@ def key_press_timer():
     counters = [0 for _ in keys]
     while running:
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                pygame.quit()
-                break
             if event.type == pygame.KEYDOWN:
                 for i, key in enumerate(keys):
                     if event.key == key:
@@ -35,14 +32,15 @@ def key_press_timer():
                         counters[i] = time.time() - counters[i]
                         times[i] += counters[i]
                         key_press_time_ms = int(1000 * counters[i])
-                        key_pressed = i+1
+                        key_pressed = i + 1
                         clock.tick(60)
-                        return (key_pressed,key_press_time_ms)
-
-#key_press_time_ms is time of pressing on event.key in milliseconds
+                        return key_pressed, key_press_time_ms // 1000
 
 
-#less than sec save the game
+# key_press_time_ms is time of pressing on event.key in milliseconds
+
+
+# less than sec save the game
 save_files = {}
 
 
@@ -55,4 +53,4 @@ def add_elements_to_file(key_pressed):
                                          MineField.get_soldier_location()]
 
         data_frame = pandas.DataFrame(save_files)
-        data_frame.to_csv("C:/Users/משתמש/PycharmProjects/The-flag-project/CSV/CSV_data.csv", index=False)
+        data_frame.to_csv("CSV/CSV_data.csv", index=False)
