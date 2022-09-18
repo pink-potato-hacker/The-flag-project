@@ -99,8 +99,8 @@ def win_or_lose(coord_x, coord_y):
              (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE == 48):
         return 2
 
+    return 0
+
     # elif mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE] == Consts.FLAG and \
     #         mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE + 1] == Consts.FLAG:
     #     return 2
-
-    return 0
