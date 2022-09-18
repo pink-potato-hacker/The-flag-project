@@ -88,9 +88,19 @@ def win_or_lose(coord_x, coord_y):
             mine_field[coord_y // Consts.SIZE + 3][coord_x // Consts.SIZE + 1] == Consts.MINES:
         Screen.show_boom((coord_x - Consts.SIZE, coord_y + Consts.SIZE))
         return 1
-
-    elif mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE] == Consts.FLAG and \
-            mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE + 1] == Consts.FLAG:
+    elif (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE + 1 == 47) or \
+            (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE + 1 == 48) or \
+            (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE + 1 == 47) or \
+            (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE + 1 == 48):
         return 2
+    elif (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE == 47) or \
+             (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE == 48) or \
+             (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE == 47) or \
+             (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE == 48):
+        return 2
+
+    # elif mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE] == Consts.FLAG and \
+    #         mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE + 1] == Consts.FLAG:
+    #     return 2
 
     return 0
