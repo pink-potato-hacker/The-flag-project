@@ -1,6 +1,5 @@
 import pygame
 
-import Database
 import MineField
 import Consts
 import Music
@@ -23,6 +22,7 @@ def main():
     MineField.randomize_mines()
     MineField.get_cords_for_elements()
     MineField.put_flag()
+
 
     while True:
         moved = False
@@ -58,7 +58,6 @@ def main():
 
                     soldier_x_location, soldier_y_location = Soldier.moving_soldier(soldier_x_location,
                                                                                     soldier_y_location, event.key)
-                    print(MineField.soldier_location)
 
                     moved = True
             elif event.type == pygame.KEYUP and not was_pressed:
