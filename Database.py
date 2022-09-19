@@ -1,8 +1,19 @@
-import MineField
 import pygame
+import MineField
 import pandas
 import os
 import ast
+
+
+"""
+This function will check for how long the player presses a key (1-9).
+:param key: the key that the player has pressed.
+:type key: int
+:return key: the key that the player has pressed.
+:return (pygame.time.get_ticks() - clock) // 1000: a var that checks for how long the key was held.
+:rtype key: int
+:rtype (pygame.time.get_ticks() - clock) // 1000: int
+"""
 
 
 def key_press_timer(key):
@@ -18,8 +29,19 @@ save_files = {}
 curr_file = {}
 
 
+"""
+This function will add/remove data from the csv file according to the examinations.
+:param key_and_time_key_pressed: the key that the player has pressed and the time he held it for.
+:type key_and_time_key_pressed: tuple
+:return True: if none of the data have changed.
+:return False: if some of the data have changed.
+:rtype True, False: boolean
+"""
+
+
 def add_to_file(key_and_time_key_pressed):
     global save_files, curr_file
+
     key_pressed, time_pressed = key_and_time_key_pressed
     file_size = os.path.getsize("CSV/CSV_data.csv")
 
@@ -57,15 +79,27 @@ def add_to_file(key_and_time_key_pressed):
             if check_for_header(key_pressed):
                 data_frame = pandas.read_csv("CSV/CSV_data.csv")
                 data_list = []
+
                 for row in data_frame[str(key_pressed)]:
                     data_list.append(ast.literal_eval(row))
-                curr_file[key_pressed] = data_list
 
+                curr_file[key_pressed] = data_list
                 MineField.load(curr_file)
                 curr_file = {}
+
                 return True
+
     save_files = {}
     return False
+
+
+"""
+This function will check if the given header exists in the csv file.
+:param header: the key that the player has pressed. 
+:type header: int
+:return str(header) in header_list: True if the header exists, else - False.
+:rtype str(header) in header_list: boolean
+"""
 
 
 def check_for_header(header):

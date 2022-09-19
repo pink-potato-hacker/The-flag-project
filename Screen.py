@@ -5,6 +5,10 @@ import Database
 
 screen = pygame.display.set_mode((Consts.NUMBER_OF_COLUMNS * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE))
 
+"""
+This function will create the light surface.
+"""
+
 
 def create_light_surface():
     # Set the screen size
@@ -43,6 +47,11 @@ def create_light_surface():
         Consts.NUMBER_OF_ROWS * Consts.SIZE - 4 * Consts.SIZE))
 
 
+"""
+This function will show a welcome text on surface.
+"""
+
+
 def welcome_text():
     font = pygame.font.SysFont(Consts.WELCOME_MESSAGE1, 35)
     text1 = font.render(Consts.WELCOME_MESSAGE1, True, Consts.TEXT_COLOR)
@@ -55,12 +64,21 @@ def welcome_text():
     pygame.display.update()
 
 
+"""
+This function will show a losing text on surface.
+"""
+
 def lose_text():
     font = pygame.font.SysFont(Consts.LOSE_MESSAGE, 100)
     lose_text = font.render(Consts.LOSE_MESSAGE, True, Consts.TEXT_COLOR)
     screen.blit(lose_text, (500, 250))
     pygame.display.flip()
     pygame.display.update()
+
+
+"""
+This function will show a winning text on surface.
+"""
 
 
 def win_text():
@@ -70,6 +88,10 @@ def win_text():
     pygame.display.flip()
     pygame.display.update()
 
+
+"""
+This function will create the dark surface when the player presses the 'enter' key.
+"""
 
 def create_dark_surface():
     # Set the screen size
@@ -99,12 +121,26 @@ def create_dark_surface():
         Consts.NUMBER_OF_ROWS * Consts.SIZE - 4 * Consts.SIZE))
 
 
+"""
+This function will fill the color of the dark surface.
+:param matrix: the matrix that used for the dark surface.
+:type matrix: list
+"""
+
+
 def fill_colors(matrix):
     # run over all the cells in the current matrix
     for i in range(Consts.NUMBER_OF_ROWS):
         for j in range(Consts.NUMBER_OF_COLUMNS):
             color = Consts.BACKGROUND_DARK_COLOR
             pygame.draw.rect(screen, color, (j * Consts.SIZE, i * Consts.SIZE, Consts.SIZE - 1, Consts.SIZE - 1))
+
+
+"""
+This function will show a "boom" image on surface when player steps on mine.
+:param cords_tuple: the x and y coordinates of where should the "boom" image appear
+:type soldier_x_location: tuple
+"""
 
 
 def show_boom(cords_tuple):

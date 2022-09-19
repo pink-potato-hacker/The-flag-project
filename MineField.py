@@ -7,17 +7,26 @@ mines = [[] for n in range(Consts.NUMBER_OF_MINES)]
 grass = []
 bushes = []
 flowers = []
-soldier_location = []
+soldier_locations = []
+
+
+"""
+This function will load a saved game.
+:param saved_dict: a dictionary that contains the coordinates/indexes of these elements in order:
+mines, flowers, bushes, grass and soldier locations.
+:type saved_dict: dict
+"""
 
 
 def load(saved_dict):
-    global flowers, bushes, grass, mines, soldier_location
+    global flowers, bushes, grass, mines, soldier_locations
+
     saved_list = list(saved_dict.values())
     mines = saved_list[0][0]
     flowers = saved_list[0][1]
     bushes = saved_list[0][2]
     grass = saved_list[0][3]
-    soldier_location = saved_list[0][4]
+    soldier_locations = saved_list[0][4]
 
     for row in range(len(mine_field)):
         for col in range(len(mine_field[0])):
@@ -28,13 +37,18 @@ def load(saved_dict):
         for i in range(1, 4):
             mine_field[mines[mine_index][0]][mines[mine_index][i]] = Consts.MINES
 
-    for position in range(len(soldier_location)):
+    for position in range(len(soldier_locations)):
         if position < 6:
-            mine_field[soldier_location[position][0]][soldier_location[position][1]] = Consts.SOLIDER_BODY
+            mine_field[soldier_locations[position][0]][soldier_locations[position][1]] = Consts.SOLIDER_BODY
         else:
-            mine_field[soldier_location[position][0]][soldier_location[position][1]] = Consts.SOLIDER_LEGS
+            mine_field[soldier_locations[position][0]][soldier_locations[position][1]] = Consts.SOLIDER_LEGS
 
     put_flag()
+
+
+"""
+This function will create an empty 'mine field' matrix.
+"""
 
 
 def create_empty():
@@ -43,6 +57,11 @@ def create_empty():
         for col in range(Consts.NUMBER_OF_COLUMNS):
             row.append(Consts.EMPTY)
         mine_field.append(row)
+
+
+"""
+This function will randomize the indexes of the mines in the matrix.
+"""
 
 
 def randomize_mines():
@@ -59,6 +78,11 @@ def randomize_mines():
         for i in range(3):
             mine_field[rnd_row][rnd_col + i] = Consts.MINES
             mines[mine_index].append(rnd_col + i)
+
+
+"""
+This function will set the coordinates of the flowers, bushes and grass on surface.
+"""
 
 
 def get_cords_for_elements():
@@ -78,10 +102,24 @@ def get_cords_for_elements():
         flowers.append((rnd_x, rnd_y))
 
 
+"""
+This function will put the flag in the matrix.
+"""
+
+
 def put_flag():
     for row in range(21, 24):
         for col in range(46, 50):
             mine_field[row][col] = Consts.FLAG
+
+
+"""
+This function will put the soldier in the matrix with the given coordinates
+:param coord_x: the x coordinate of the soldier
+:param coord_y: the y coordinate of the soldier
+:type coord_x: float
+:type coord_y: float
+"""
 
 
 def put_solider_in_matrix(coord_x, coord_y):
@@ -104,6 +142,13 @@ def put_solider_in_matrix(coord_x, coord_y):
                 mine_field[row + i][col + 1] = Consts.SOLIDER_LEGS
 
 
+"""
+This function will return the current position of the soldier in matrix.
+:return soldier_location: list of tuples of soldier's position in matrix.
+:rtype 0,1,soldier_location: list
+"""
+
+
 def get_soldier_location():
     soldier_location = []
     for x_index in range(len(mine_field)):
@@ -115,17 +160,32 @@ def get_soldier_location():
     return soldier_location
 
 
+"""
+This function will check if the player has won the game or lost it.
+:param coord_x: the x coordinate of the soldier
+:param coord_y: the y coordinate of the soldier
+:type coord_x: float
+:type coord_y: float
+:return 0: if nothing happened
+:return 1: if the player has lost the game
+:return 2: if the player has won the game
+:rtype 0,1,2: int
+"""
+
+
 def win_or_lose(coord_x, coord_y):
     # 1 - Lose, 2 - Win
     if mine_field[coord_y // Consts.SIZE + 3][coord_x // Consts.SIZE] == Consts.MINES or \
             mine_field[coord_y // Consts.SIZE + 3][coord_x // Consts.SIZE + 1] == Consts.MINES:
         Screen.show_boom((coord_x - Consts.SIZE, coord_y + Consts.SIZE))
         return 1
+
     elif (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE + 1 == 47) or \
             (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE + 1 == 48) or \
             (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE + 1 == 47) or \
             (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE + 1 == 48):
         return 2
+
     elif (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE == 47) or \
             (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE == 48) or \
             (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE == 47) or \

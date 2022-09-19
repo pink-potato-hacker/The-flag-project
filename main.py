@@ -8,6 +8,7 @@ import Soldier
 
 
 def main():
+    # starting the game
     pygame.init()
     Music.background_music()
     screen_timer = 0
@@ -26,15 +27,15 @@ def main():
     while True:
         moved = False
 
-        if (pygame.time.get_ticks() - screen_timer) / 1000 < 0.5 and was_pressed:
+        if (pygame.time.get_ticks() - screen_timer) / 1000 < 0.5 and was_pressed:  # dark surface
             Screen.create_dark_surface()
             Soldier.place_soldier((soldier_x, soldier_y), 'night')
-        else:
+        else:  # light surface
             was_pressed = False
             Screen.create_light_surface()
             Soldier.place_soldier((soldier_x, soldier_y))
 
-        if (pygame.time.get_ticks() - message_timer) / 1000 < 2:
+        if (pygame.time.get_ticks() - message_timer) / 1000 < 2:  # welcome text
             Screen.welcome_text()
 
         pygame.display.flip()
@@ -46,36 +47,39 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return []
+
             elif event.type == pygame.KEYDOWN:
                 if event.key in [pygame.K_1, pygame.K_2, pygame.K_3, pygame.K_4, pygame.K_5, pygame.K_6, pygame.K_7,
-                                 pygame.K_8, pygame.K_9]:
+                                 pygame.K_8, pygame.K_9]:  # CSV - (1-9)
 
                     key = Database.key_press_timer(event.key)
-                    if Database.add_to_file(key):
-                        print(MineField.mine_field)
-                        soldier_x = MineField.soldier_location[0][1] * Consts.SIZE
-                        soldier_y = MineField.soldier_location[0][0] * Consts.SIZE
+
+                    if Database.add_to_file(key):  # load a new game
+                        soldier_x = MineField.soldier_locations[0][1] * Consts.SIZE
+                        soldier_y = MineField.soldier_locations[0][0] * Consts.SIZE
                     moved = True
 
-                if event.key == pygame.K_RETURN:
+                if event.key == pygame.K_RETURN:  # dark surface
                     screen_timer = pygame.time.get_ticks()
                     was_pressed = True
 
                 elif event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT,
-                                   pygame.K_DOWN] and not moved and not was_pressed:
+                                   pygame.K_DOWN] and not moved and not was_pressed:  # arrows
 
                     soldier_x, soldier_y = Soldier.move_soldier(soldier_x,
                                                                 soldier_y, event.key)
 
-            elif event.type == pygame.KEYUP and not was_pressed:
+            elif event.type == pygame.KEYUP and not was_pressed:  # nothing was pressed
                 if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN]:
                     moved = False
 
+        # update
         Screen.create_light_surface()
         Soldier.place_soldier((soldier_x, soldier_y), 'day')
         win_or_lose = MineField.win_or_lose(soldier_x, soldier_y)
         MineField.put_solider_in_matrix(soldier_x, soldier_y)
 
+        # win or lose
         if win_or_lose != 0:
             message_won_lose_timer = pygame.time.get_ticks()
             if win_or_lose == 2:
