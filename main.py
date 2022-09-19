@@ -6,7 +6,6 @@ import Music
 import Screen
 import Soldier
 
-
 def main():
     pygame.init()
     Music.background_music()
@@ -23,6 +22,7 @@ def main():
     MineField.get_cords_for_elements()
     MineField.put_flag()
 
+
     while True:
         moved = False
 
@@ -36,6 +36,7 @@ def main():
 
         if (pygame.time.get_ticks() - message_timer) / 1000 < 2:
             Screen.welcome_text()
+
 
         pygame.display.flip()
         pygame.display.update()
@@ -52,10 +53,9 @@ def main():
 
                     key = Database.key_press_timer(event.key)
                     if Database.add_elements_to_file(key):
-                        soldier_x_location = MineField.soldier_location[0][0] * Consts.SIZE
-                        soldier_y_location = MineField.soldier_location[0][1] * Consts.SIZE
-
-                        Soldier.placing_soldier((soldier_x_location, soldier_y_location), 'day')
+                        print(MineField.mine_field)
+                        soldier_x_location = MineField.soldier_location[0][1] * Consts.SIZE
+                        soldier_y_location = MineField.soldier_location[0][0] * Consts.SIZE
                     moved = True
 
                 if event.key == pygame.K_RETURN:
