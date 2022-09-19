@@ -84,6 +84,8 @@ def add_elements_to_file(key_and_time_key_pressed):
                 curr_file[key_pressed] = data_list
 
                 MineField.create_mine_field_from_saved_files(curr_file)
+                return True
+    return False
 
 def check_if_header_in_csv(header):
 

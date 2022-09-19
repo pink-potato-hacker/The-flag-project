@@ -52,11 +52,10 @@ def main():
                                  pygame.K_8, pygame.K_9]:
 
                     key = Database.key_press_timer()
-                    Database.add_elements_to_file(key)
-                    print(MineField.mine_field)
+                    if Database.add_elements_to_file(key):
+                        soldier_x_location = MineField.soldier_location[0][0] * Consts.SIZE
+                        soldier_y_location = MineField.soldier_location[0][1] * Consts.SIZE
                     moved = True
-                    # pygame.display.flip()
-                    # pygame.display.update()
 
                 if event.key == pygame.K_RETURN:
                     screen_timer = pygame.time.get_ticks()

@@ -8,8 +8,10 @@ mines = [[] for n in range(Consts.NUMBER_OF_MINES)]
 grass = []
 bushes = []
 flowers = []
+soldier_location = []
 
 def create_mine_field_from_saved_files(saved_dict):
+    global flowers, bushes, grass, mines, soldier_location
     saved_list = list(saved_dict.values())
     mines = saved_list[0][0]
     flowers = saved_list[0][1]
