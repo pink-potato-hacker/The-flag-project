@@ -75,7 +75,7 @@ def randomize_mines():
 
         mines[mine_index].append(rnd_row)
 
-        for i in range(3):
+        for i in range(Consts.TRAP_LENGTH):
             mine_field[rnd_row][rnd_col + i] = Consts.MINES
             mines[mine_index].append(rnd_col + i)
 

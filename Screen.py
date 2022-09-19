@@ -20,7 +20,8 @@ def create_light_surface():
                      pygame.Rect(0, 0, Consts.SIZE * Consts.NUMBER_OF_COLUMNS, Consts.SIZE * Consts.NUMBER_OF_ROWS))
 
     background_img = pygame.image.load("png files/background.png").convert_alpha()
-    background_img = pygame.transform.scale(background_img, (Consts.SIZE * Consts.NUMBER_OF_COLUMNS, Consts.SIZE * Consts.NUMBER_OF_ROWS))
+    background_img = pygame.transform.scale(background_img, (
+    Consts.SIZE * Consts.NUMBER_OF_COLUMNS, Consts.SIZE * Consts.NUMBER_OF_ROWS))
     screen.blit(background_img, (0, 0))
 
     bush_img = pygame.image.load("png files/bush.png").convert_alpha()
@@ -69,6 +70,7 @@ def welcome_text():
 This function will show a losing text on surface.
 """
 
+
 def lose_text():
     font = pygame.font.SysFont(Consts.LOSE_MESSAGE, 100)
     lose_text = font.render(Consts.LOSE_MESSAGE, True, Consts.TEXT_COLOR)
@@ -94,6 +96,7 @@ def win_text():
 This function will create the dark surface when the player presses the 'enter' key.
 """
 
+
 def create_dark_surface():
     # Set the screen size
     size = (Consts.SIZE * Consts.NUMBER_OF_COLUMNS, Consts.SIZE * Consts.NUMBER_OF_ROWS)
@@ -108,7 +111,7 @@ def create_dark_surface():
 
     mine_img = pygame.image.load("png files/mine.png").convert_alpha()
     mine_img = pygame.transform.scale(mine_img,
-                                      (Consts.SIZE * Consts.MINES_SIZE[1], Consts.SIZE * Consts.MINES_SIZE[0]))
+                                      (Consts.SIZE * Consts.TRAP_LENGTH, Consts.SIZE * Consts.TRAP_HEIGHT))
 
     for mine_index in range(20):
         x = MineField.mines[mine_index][1] * Consts.SIZE
@@ -117,7 +120,7 @@ def create_dark_surface():
 
     teleport_img = pygame.image.load("png files/teleport.png").convert_alpha()
     teleport_img = pygame.transform.scale(teleport_img,
-                                      (Consts.SIZE * Consts.MINES_SIZE[1], Consts.SIZE * Consts.MINES_SIZE[0]))
+                                          (Consts.SIZE * Consts.TRAP_LENGTH, Consts.SIZE * Consts.TRAP_HEIGHT))
 
     for tel_index in range(5):
         x = Teleport.teleports[tel_index][1] * Consts.SIZE
@@ -157,4 +160,3 @@ def show_boom(cords_tuple):
     boom_img = pygame.image.load("png files/boom.png").convert_alpha()
     boom_img = pygame.transform.scale(boom_img, (Consts.SIZE * 4, Consts.SIZE * 4))
     screen.blit(boom_img, cords_tuple)
-

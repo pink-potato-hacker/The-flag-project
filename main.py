@@ -26,6 +26,7 @@ def main():
     MineField.get_cords_for_elements()
     MineField.put_flag()
     Teleport.randomize_teleports()
+    print(Teleport.teleports)
 
     while True:
         moved = False

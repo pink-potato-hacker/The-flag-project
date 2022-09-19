@@ -3,7 +3,7 @@ import MineField
 import random
 import Screen
 
-teleports = [[] for n in range(Consts.NUMBER_OF_TELEPORTS)]
+teleports = [[] for l in range(Consts.NUMBER_OF_TELEPORTS)]
 
 """
 This function will randomize the indexes of the teleports in the matrix.
@@ -11,19 +11,29 @@ This function will randomize the indexes of the teleports in the matrix.
 
 
 def randomize_teleports():
-    for tel_index in range(Consts.NUMBER_OF_TELEPORTS):
+    tel_index = 0
+
+    while len(teleports[4]) < 4:
+        empty = True
+
         rnd_row = random.randint(4, 20)
         rnd_col = random.randint(0, 46)
 
-        while MineField.mine_field[rnd_row][rnd_col] != Consts.EMPTY:
-            rnd_row = random.randint(3, 24)
-            rnd_col = random.randint(0, 46)
+        for i in range(3):
+            if MineField.mine_field[rnd_row][rnd_col + i] != Consts.EMPTY:
+                empty = False
 
-        teleports[tel_index].append(rnd_row)
+        if empty:
+            teleports[tel_index].append(rnd_row)
 
-        for n in range(3):
-            MineField.mine_field[rnd_row][rnd_col + n] = Consts.TELEPORTS
-            teleports[tel_index].append(rnd_col + n)
+            for j in range(Consts.TRAP_LENGTH):
+                MineField.mine_field[rnd_row][rnd_col + j] = Consts.TELEPORTS
+                teleports[tel_index].append(rnd_col + j)
+
+            tel_index += 1
+
+        else:
+            continue
 
 
 """
