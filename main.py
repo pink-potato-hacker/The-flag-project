@@ -86,8 +86,8 @@ def main():
         # win or lose / teleport
         if is_teleported:
             tel_coords = Teleport.pick_teleport(soldier_x, soldier_y)
-            soldier_x = tel_coords[0] * Consts.SIZE - 3
-            soldier_y = tel_coords[1] * Consts.SIZE
+            soldier_x = tel_coords[1] * Consts.SIZE
+            soldier_y = (tel_coords[0] - 4) * Consts.SIZE
 
         if win_or_lose != 0:
             message_won_lose_timer = pygame.time.get_ticks()
