@@ -4,6 +4,7 @@ import pandas
 import os
 import ast
 
+
 def key_press_timer(key):
     clock = pygame.time.get_ticks()
 
@@ -13,13 +14,11 @@ def key_press_timer(key):
                 return int(chr(key)), (pygame.time.get_ticks() - clock) // 1000
 
 
-# key_press_time_ms is time of pressing on event.key in milliseconds
-
-# less than sec save the game
 save_files = {}
 curr_file = {}
 
-def add_elements_to_file(key_and_time_key_pressed):
+
+def add_to_file(key_and_time_key_pressed):
     global save_files, curr_file
     key_pressed, time_pressed = key_and_time_key_pressed
     file_size = os.path.getsize("CSV/CSV_data.csv")
@@ -34,7 +33,7 @@ def add_elements_to_file(key_and_time_key_pressed):
             data_frame = pandas.DataFrame(save_files)
             data_frame.to_csv("CSV/CSV_data.csv", index=False)
 
-        elif not check_if_header_in_csv(key_pressed):  # file doesn't contain the given header
+        elif not check_for_header(key_pressed):  # file doesn't contain the given header
             data_frame = pandas.read_csv("CSV/CSV_data.csv")
             data_frame[key_pressed] = [MineField.mines,
                                        MineField.flowers,
@@ -43,7 +42,7 @@ def add_elements_to_file(key_and_time_key_pressed):
                                        MineField.get_soldier_location()]
             data_frame.to_csv("CSV/CSV_data.csv", index=False)
 
-        elif check_if_header_in_csv(key_pressed):  # file contains the given header
+        elif check_for_header(key_pressed):  # file contains the given header
             data_frame = pandas.read_csv("CSV/CSV_data.csv")
             data_frame.drop(str(key_pressed), inplace=True, axis=1)
             data_frame[key_pressed] = [MineField.mines,
@@ -53,24 +52,22 @@ def add_elements_to_file(key_and_time_key_pressed):
                                        MineField.get_soldier_location()]
             data_frame.to_csv("CSV/CSV_data.csv", index=False)
 
-    elif time_pressed > 1:
+    else:
         if file_size != 0:
-            if check_if_header_in_csv(key_pressed):
+            if check_for_header(key_pressed):
                 data_frame = pandas.read_csv("CSV/CSV_data.csv")
                 data_list = []
                 for row in data_frame[str(key_pressed)]:
                     data_list.append(ast.literal_eval(row))
                 curr_file[key_pressed] = data_list
 
-                MineField.create_mine_field_from_saved_files(curr_file)
+                MineField.load(curr_file)
                 curr_file = {}
                 return True
     save_files = {}
     return False
 
-def check_if_header_in_csv(header):
 
+def check_for_header(header):
     header_list = pandas.read_csv("CSV/CSV_data.csv", nrows=0).columns.tolist()
-    if str(header) in header_list:
-        return True
-    return False
+    return str(header) in header_list

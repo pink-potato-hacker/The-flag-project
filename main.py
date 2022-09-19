@@ -6,6 +6,7 @@ import Music
 import Screen
 import Soldier
 
+
 def main():
     pygame.init()
     Music.background_music()
@@ -14,29 +15,27 @@ def main():
 
     was_pressed = False
 
-    soldier_x_location = Consts.SOLIDER_STARTING_PLACE[0]
-    soldier_y_location = Consts.SOLIDER_STARTING_PLACE[1]
+    soldier_x = Consts.SOLIDER_STARTING_PLACE[0]
+    soldier_y = Consts.SOLIDER_STARTING_PLACE[1]
 
-    MineField.create_empty_mine_field()
+    MineField.create_empty()
     MineField.randomize_mines()
     MineField.get_cords_for_elements()
     MineField.put_flag()
-
 
     while True:
         moved = False
 
         if (pygame.time.get_ticks() - screen_timer) / 1000 < 0.5 and was_pressed:
             Screen.create_dark_surface()
-            Soldier.placing_soldier((soldier_x_location, soldier_y_location), 'night')
+            Soldier.place_soldier((soldier_x, soldier_y), 'night')
         else:
             was_pressed = False
             Screen.create_light_surface()
-            Soldier.placing_soldier((soldier_x_location, soldier_y_location))
+            Soldier.place_soldier((soldier_x, soldier_y))
 
         if (pygame.time.get_ticks() - message_timer) / 1000 < 2:
             Screen.welcome_text()
-
 
         pygame.display.flip()
         pygame.display.update()
@@ -52,10 +51,10 @@ def main():
                                  pygame.K_8, pygame.K_9]:
 
                     key = Database.key_press_timer(event.key)
-                    if Database.add_elements_to_file(key):
+                    if Database.add_to_file(key):
                         print(MineField.mine_field)
-                        soldier_x_location = MineField.soldier_location[0][1] * Consts.SIZE
-                        soldier_y_location = MineField.soldier_location[0][0] * Consts.SIZE
+                        soldier_x = MineField.soldier_location[0][1] * Consts.SIZE
+                        soldier_y = MineField.soldier_location[0][0] * Consts.SIZE
                     moved = True
 
                 if event.key == pygame.K_RETURN:
@@ -65,17 +64,17 @@ def main():
                 elif event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT,
                                    pygame.K_DOWN] and not moved and not was_pressed:
 
-                    soldier_x_location, soldier_y_location = Soldier.moving_soldier(soldier_x_location,
-                                                                                    soldier_y_location, event.key)
+                    soldier_x, soldier_y = Soldier.move_soldier(soldier_x,
+                                                                soldier_y, event.key)
 
             elif event.type == pygame.KEYUP and not was_pressed:
                 if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN]:
                     moved = False
 
         Screen.create_light_surface()
-        Soldier.placing_soldier((soldier_x_location, soldier_y_location), 'day')
-        win_or_lose = MineField.win_or_lose(soldier_x_location, soldier_y_location)
-        MineField.put_solider_in_matrix(soldier_x_location, soldier_y_location)
+        Soldier.place_soldier((soldier_x, soldier_y), 'day')
+        win_or_lose = MineField.win_or_lose(soldier_x, soldier_y)
+        MineField.put_solider_in_matrix(soldier_x, soldier_y)
 
         if win_or_lose != 0:
             message_won_lose_timer = pygame.time.get_ticks()
@@ -86,7 +85,7 @@ def main():
                 break
 
             elif win_or_lose == 1:
-                Soldier.placing_soldier((soldier_x_location, soldier_y_location), 'dead')
+                Soldier.place_soldier((soldier_x, soldier_y), 'dead')
                 while (pygame.time.get_ticks() - message_won_lose_timer) / 1000 < 3:
                     Screen.lose_text()
                     Music.bomb_sound()

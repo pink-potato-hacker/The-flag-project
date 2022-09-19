@@ -10,8 +10,7 @@ flowers = []
 soldier_location = []
 
 
-# load
-def create_mine_field_from_saved_files(saved_dict):
+def load(saved_dict):
     global flowers, bushes, grass, mines, soldier_location
     saved_list = list(saved_dict.values())
     mines = saved_list[0][0]
@@ -38,7 +37,7 @@ def create_mine_field_from_saved_files(saved_dict):
     put_flag()
 
 
-def create_empty_mine_field():
+def create_empty():
     for i in range(Consts.NUMBER_OF_ROWS):
         row = []
         for col in range(Consts.NUMBER_OF_COLUMNS):

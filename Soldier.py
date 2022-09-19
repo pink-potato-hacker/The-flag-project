@@ -3,7 +3,7 @@ import Screen
 import pygame
 
 
-def placing_soldier(cords_tuple, solider_type="day"):
+def place_soldier(cords_tuple, solider_type="day"):
     if solider_type == "day":
         soldier_img = pygame.image.load("png files/soldier.png")
     elif solider_type == "night":
@@ -16,7 +16,7 @@ def placing_soldier(cords_tuple, solider_type="day"):
 
 
 # move
-def moving_soldier(soldier_x_location, soldier_y_location, key):
+def move_soldier(soldier_x_location, soldier_y_location, key):
     if key == pygame.K_LEFT:
         soldier_x_location -= Consts.SIZE
         if soldier_x_location - Consts.SIZE < -Consts.SIZE:
