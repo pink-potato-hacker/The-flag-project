@@ -83,8 +83,7 @@ def add_elements_to_file(key_and_time_key_pressed):
                     data_list.append(ast.literal_eval(row))
                 curr_file[key_pressed] = data_list
 
-    print(curr_file)
-    save_files = {}
+                MineField.create_mine_field_from_saved_files(curr_file)
 
 def check_if_header_in_csv(header):
 

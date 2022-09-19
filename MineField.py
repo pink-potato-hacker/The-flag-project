@@ -9,6 +9,31 @@ grass = []
 bushes = []
 flowers = []
 
+def create_mine_field_from_saved_files(saved_dict):
+    saved_list = list(saved_dict.values())
+    mines = saved_list[0][0]
+    flowers = saved_list[0][1]
+    bushes = saved_list[0][2]
+    grass = saved_list[0][3]
+    soldier_location = saved_list[0][4]
+
+    for row in range(len(mine_field)):
+        for col in range(len(mine_field[0])):
+            if mine_field[row][col] != Consts.EMPTY:
+                mine_field[row][col] = Consts.EMPTY
+
+    for mine_index in range(Consts.NUMBER_OF_MINES):
+        for i in range(1, 4):
+            mine_field[mines[mine_index][0]][mines[mine_index][i]] = Consts.MINES
+
+    for position in range(len(soldier_location)):  # [[1,2],[3,4]]
+        if position < 6:
+            mine_field[soldier_location[position][0]][soldier_location[position][1]] = Consts.SOLIDER_BODY
+        else:
+            mine_field[soldier_location[position][0]][soldier_location[position][1]] = Consts.SOLIDER_LEGS
+
+    put_flag()
+
 def create_empty_mine_field():
     for i in range(Consts.NUMBER_OF_ROWS):
         row = []
