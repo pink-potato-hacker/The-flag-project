@@ -72,6 +72,11 @@ def main():
 
                     soldier_x, soldier_y = KeyInputs.move_soldier(soldier_x,
                                                                   soldier_y, event.key)
+                    is_teleported = Teleport.step_on_teleport(soldier_x, soldier_y)
+                    if is_teleported:
+                        tel_coords = Teleport.pick_teleport(soldier_x, soldier_y)
+                        soldier_x = (tel_coords[1]) * Consts.SIZE
+                        soldier_y = (tel_coords[0] - 3) * Consts.SIZE
 
             elif event.type == pygame.KEYUP and not was_pressed:  # nothing was pressed
                 if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN]:
@@ -81,15 +86,9 @@ def main():
         Screen.create_light_surface()
         Soldier.place_soldier((soldier_x, soldier_y), 'day')
         win_or_lose = MineField.win_or_lose(soldier_x, soldier_y)
-        is_teleported = Teleport.step_on_teleport(soldier_x, soldier_y)
         MineField.put_solider_in_matrix(soldier_x, soldier_y)
 
-        # win or lose / teleport
-        if is_teleported:
-            tel_coords = Teleport.pick_teleport(soldier_x, soldier_y)
-            soldier_x = tel_coords[1] * Consts.SIZE
-            soldier_y = (tel_coords[0] - 4) * Consts.SIZE
-
+        # win or lose
         if win_or_lose != 0:
             message_won_lose_timer = pygame.time.get_ticks()
             if win_or_lose == 2:

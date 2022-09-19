@@ -2,6 +2,7 @@ import Consts
 import MineField
 import random
 import Screen
+import copy
 
 teleports = [[] for l in range(Consts.NUMBER_OF_TELEPORTS)]
 
@@ -67,15 +68,27 @@ This function will pick randomly to which teleport the player teleports.
 
 
 def pick_teleport(coord_x, coord_y):
-    random_teleport = random.choice(teleports)
+    teleports_copy = copy.deepcopy(teleports)
+    random_teleport = random.choice(teleports_copy)
 
     while True:
         if random_teleport[0] == coord_y // Consts.SIZE + 3:
             for i in range(1, 4):
                 if random_teleport[i] == coord_y // Consts.SIZE + 3:
-                    random_teleport = random.choice(teleports)
+                    random_teleport = random.choice(teleports_copy)
         else:
             random_teleport[0] = random_teleport[0] - 1
             break
 
     return random_teleport
+
+
+def load_tels(saved_dict):
+    global teleports
+
+    saved_list = list(saved_dict.values())
+    teleports = saved_list[0][5]
+
+    for tel_index in range(Consts.NUMBER_OF_TELEPORTS):
+        for i in range(1, 4):
+            MineField.mine_field[teleports[tel_index][0]][teleports[tel_index][i]] = Consts.TELEPORTS
