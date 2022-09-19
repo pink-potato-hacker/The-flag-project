@@ -8,6 +8,7 @@ import Soldier
 import KeyInputs
 import Teleport
 
+
 def main():
     # starting the game
     pygame.init()
@@ -69,7 +70,7 @@ def main():
                                    pygame.K_DOWN] and not moved and not was_pressed:  # arrows
 
                     soldier_x, soldier_y = KeyInputs.move_soldier(soldier_x,
-                                                                soldier_y, event.key)
+                                                                  soldier_y, event.key)
 
             elif event.type == pygame.KEYUP and not was_pressed:  # nothing was pressed
                 if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN]:
