@@ -15,11 +15,9 @@ def randomize_teleports():
         rnd_row = random.randint(4, 20)
         rnd_col = random.randint(0, 46)
 
-        for i in range(len(MineField.mines)):
-            for j in range(len(MineField.mines[i])):
-                if MineField.mine_field[rnd_row][rnd_col] != Consts.EMPTY:
-                    rnd_row = random.randint(3, 24)
-                    rnd_col = random.randint(0, 46)
+        while MineField.mine_field[rnd_row][rnd_col] != Consts.EMPTY:
+            rnd_row = random.randint(3, 24)
+            rnd_col = random.randint(0, 46)
 
         teleports[tel_index].append(rnd_row)
 
