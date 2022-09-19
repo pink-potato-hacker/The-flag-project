@@ -37,6 +37,7 @@ def main():
         if (pygame.time.get_ticks() - message_timer) / 1000 < 2:
             Screen.welcome_text()
 
+
         pygame.display.flip()
         pygame.display.update()
 
@@ -47,6 +48,16 @@ def main():
                 pygame.quit()
                 return []
             elif event.type == pygame.KEYDOWN:
+                if event.key in [pygame.K_1, pygame.K_2, pygame.K_3, pygame.K_4, pygame.K_5, pygame.K_6, pygame.K_7,
+                                 pygame.K_8, pygame.K_9]:
+
+                    key = Database.key_press_timer()
+                    Database.add_elements_to_file(key)
+                    print(MineField.mine_field)
+                    moved = True
+                    # pygame.display.flip()
+                    # pygame.display.update()
+
                 if event.key == pygame.K_RETURN:
                     screen_timer = pygame.time.get_ticks()
                     was_pressed = True
@@ -56,14 +67,7 @@ def main():
 
                     soldier_x_location, soldier_y_location = Soldier.moving_soldier(soldier_x_location,
                                                                                     soldier_y_location, event.key)
-                if event.key in [pygame.K_1, pygame.K_2, pygame.K_3, pygame.K_4, pygame.K_5, pygame.K_6, pygame.K_7,
-                                 pygame.K_8, pygame.K_9]:
 
-                    key = Database.key_press_timer()
-                    Database.add_elements_to_file(key)
-
-
-                    moved = True
             elif event.type == pygame.KEYUP and not was_pressed:
                 if event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT, pygame.K_DOWN]:
                     moved = False

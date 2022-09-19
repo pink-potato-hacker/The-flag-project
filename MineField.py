@@ -26,7 +26,7 @@ def create_mine_field_from_saved_files(saved_dict):
         for i in range(1, 4):
             mine_field[mines[mine_index][0]][mines[mine_index][i]] = Consts.MINES
 
-    for position in range(len(soldier_location)):  # [[1,2],[3,4]]
+    for position in range(len(soldier_location)):
         if position < 6:
             mine_field[soldier_location[position][0]][soldier_location[position][1]] = Consts.SOLIDER_BODY
         else:
