@@ -76,11 +76,12 @@ def add_elements_to_file(key_and_time_key_pressed):
 
     elif time_pressed > 1:
         if file_size != 0:
-            data_frame = pandas.read_csv("CSV/CSV_data.csv")
-            data_list = []
-            for row in data_frame[str(key_pressed)]:
-                data_list.append(ast.literal_eval(row))
-            curr_file[key_pressed] = data_list
+            if check_if_header_in_csv(key_pressed):
+                data_frame = pandas.read_csv("CSV/CSV_data.csv")
+                data_list = []
+                for row in data_frame[str(key_pressed)]:
+                    data_list.append(ast.literal_eval(row))
+                curr_file[key_pressed] = data_list
 
     print(curr_file)
     save_files = {}
