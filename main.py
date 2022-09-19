@@ -51,10 +51,11 @@ def main():
                 if event.key in [pygame.K_1, pygame.K_2, pygame.K_3, pygame.K_4, pygame.K_5, pygame.K_6, pygame.K_7,
                                  pygame.K_8, pygame.K_9]:
 
-                    key = Database.key_press_timer()
+                    key = Database.key_press_timer(event.key)
                     if Database.add_elements_to_file(key):
-                        soldier_x_location = MineField.soldier_location[0][0] * Consts.SIZE
-                        soldier_y_location = MineField.soldier_location[0][1] * Consts.SIZE
+                        print(MineField.mine_field)
+                        soldier_x_location = MineField.soldier_location[0][1] * Consts.SIZE
+                        soldier_y_location = MineField.soldier_location[0][0] * Consts.SIZE
                     moved = True
 
                 if event.key == pygame.K_RETURN:
