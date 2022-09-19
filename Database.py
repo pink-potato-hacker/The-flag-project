@@ -1,30 +1,7 @@
-import pygame
 import MineField
 import pandas
 import os
 import ast
-
-
-"""
-This function will check for how long the player presses a key (1-9).
-:param key: the key that the player has pressed.
-:type key: int
-:return key: the key that the player has pressed.
-:return (pygame.time.get_ticks() - clock) // 1000: a var that checks for how long the key was held.
-:rtype key: int
-:rtype (pygame.time.get_ticks() - clock) // 1000: int
-"""
-
-
-def key_press_timer(key):
-    clock = pygame.time.get_ticks()
-
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.KEYUP and event.key == key:
-                return int(chr(key)), (pygame.time.get_ticks() - clock) // 1000
-
-
 save_files = {}
 curr_file = {}
 

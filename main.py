@@ -5,7 +5,7 @@ import Consts
 import Music
 import Screen
 import Soldier
-
+import KeyInputs
 
 def main():
     # starting the game
@@ -52,7 +52,7 @@ def main():
                 if event.key in [pygame.K_1, pygame.K_2, pygame.K_3, pygame.K_4, pygame.K_5, pygame.K_6, pygame.K_7,
                                  pygame.K_8, pygame.K_9]:  # CSV - (1-9)
 
-                    key = Database.key_press_timer(event.key)
+                    key = KeyInputs.key_press_timer(event.key)
 
                     if Database.add_to_file(key):  # load a new game
                         soldier_x = MineField.soldier_locations[0][1] * Consts.SIZE
@@ -66,7 +66,7 @@ def main():
                 elif event.key in [pygame.K_LEFT, pygame.K_UP, pygame.K_RIGHT,
                                    pygame.K_DOWN] and not moved and not was_pressed:  # arrows
 
-                    soldier_x, soldier_y = Soldier.move_soldier(soldier_x,
+                    soldier_x, soldier_y = KeyInputs.move_soldier(soldier_x,
                                                                 soldier_y, event.key)
 
             elif event.type == pygame.KEYUP and not was_pressed:  # nothing was pressed
