@@ -40,6 +40,7 @@ def move_soldier(soldier_x_location, soldier_y_location, key):
 
     return soldier_x_location, soldier_y_location
 
+
 """
 This function will check for how long the player presses a key (1-9).
 :param key: the key that the player has pressed.
