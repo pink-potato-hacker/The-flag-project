@@ -2,6 +2,7 @@ import pygame
 import MineField
 import Consts
 import Database
+import Teleport
 
 screen = pygame.display.set_mode((Consts.NUMBER_OF_COLUMNS * Consts.SIZE, Consts.NUMBER_OF_ROWS * Consts.SIZE))
 
@@ -113,6 +114,15 @@ def create_dark_surface():
         x = MineField.mines[mine_index][1] * Consts.SIZE
         y = MineField.mines[mine_index][0] * Consts.SIZE
         screen.blit(mine_img, (x, y))
+
+    teleport_img = pygame.image.load("png files/teleport.png").convert_alpha()
+    teleport_img = pygame.transform.scale(teleport_img,
+                                      (Consts.SIZE * Consts.MINES_SIZE[1], Consts.SIZE * Consts.MINES_SIZE[0]))
+
+    for tel_index in range(5):
+        x = Teleport.teleports[tel_index][1] * Consts.SIZE
+        y = Teleport.teleports[tel_index][0] * Consts.SIZE
+        screen.blit(teleport_img, (x, y))
 
     flag_img = pygame.image.load("png files/flag.png").convert_alpha()
     flag_img = pygame.transform.scale(flag_img, (Consts.SIZE * 4, Consts.SIZE * 4))

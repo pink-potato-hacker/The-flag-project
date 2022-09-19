@@ -30,5 +30,6 @@ LOSE_MESSAGE = "You lost!"
 SOLIDER_LEGS = 'solider legs'
 SOLIDER_BODY = 'solider body'
 MINES = 'mine'
+TELEPORTS = 'teleport'
 FLAG = 'flag'
 EMPTY = '0'

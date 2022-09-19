@@ -6,6 +6,7 @@ import Music
 import Screen
 import Soldier
 import KeyInputs
+import Teleport
 
 def main():
     # starting the game
@@ -23,6 +24,7 @@ def main():
     MineField.randomize_mines()
     MineField.get_cords_for_elements()
     MineField.put_flag()
+    Teleport.randomize_teleports()
 
     while True:
         moved = False
@@ -77,9 +79,15 @@ def main():
         Screen.create_light_surface()
         Soldier.place_soldier((soldier_x, soldier_y), 'day')
         win_or_lose = MineField.win_or_lose(soldier_x, soldier_y)
+        is_teleported = Teleport.step_on_teleport(soldier_x, soldier_y)
         MineField.put_solider_in_matrix(soldier_x, soldier_y)
 
-        # win or lose
+        # win or lose / teleport
+        if is_teleported:
+            tel_coords = Teleport.pick_teleport(soldier_x, soldier_y)
+            soldier_x = tel_coords[0] * Consts.SIZE - 3
+            soldier_y = tel_coords[1] * Consts.SIZE
+
         if win_or_lose != 0:
             message_won_lose_timer = pygame.time.get_ticks()
             if win_or_lose == 2:
