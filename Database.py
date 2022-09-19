@@ -4,32 +4,14 @@ import pandas
 import os
 import ast
 
-def key_press_timer():
-    running = True
+
+def key_press_timer(key):
     clock = pygame.time.get_ticks()
-    keys = [
-        pygame.K_1,
-        pygame.K_2,
-        pygame.K_3,
-        pygame.K_4,
-        pygame.K_5,
-        pygame.K_6,
-        pygame.K_7,
-        pygame.K_8,
-        pygame.K_9,
-    ]
-    times = [0 for _ in keys]
-    counters = [0 for _ in keys]
-    while running:
+
+    while True:
         for event in pygame.event.get():
-            if event.type == pygame.KEYUP:
-                for i, key in enumerate(keys):
-                    if event.key == key:
-                        counters[i] = (pygame.time.get_ticks() - clock) - counters[i]
-                        times[i] += counters[i]
-                        key_press_time_ms = pygame.time.get_ticks() - clock
-                        key_pressed = i + 1
-                        return key_pressed, key_press_time_ms // 1000
+            if event.type == pygame.KEYUP and event.key == key:
+                return int(chr(key)) - 1, (pygame.time.get_ticks() - clock) // 1000
 
 
 # key_press_time_ms is time of pressing on event.key in milliseconds
@@ -58,23 +40,23 @@ def add_elements_to_file(key_and_time_key_pressed):
         elif not check_if_header_in_csv(key_pressed):  # file doesn't contain the given header
             data_frame = pandas.read_csv("CSV/CSV_data.csv")
             data_frame.insert(key_pressed - 1, column=key_pressed, value=[MineField.mines,
-                                       MineField.flowers,
-                                       MineField.bushes,
-                                       MineField.grass,
-                                       MineField.get_soldier_location()])
+                                                                          MineField.flowers,
+                                                                          MineField.bushes,
+                                                                          MineField.grass,
+                                                                          MineField.get_soldier_location()])
             data_frame.to_csv("CSV/CSV_data.csv", index=False)
 
         elif check_if_header_in_csv(key_pressed):  # file contains the given header
             data_frame = pandas.read_csv("CSV/CSV_data.csv")
             data_frame.drop(str(key_pressed), inplace=True, axis=1)
             data_frame.insert(key_pressed - 1, column=str(key_pressed), value=[MineField.mines,
-                                       MineField.flowers,
-                                       MineField.bushes,
-                                       MineField.grass,
-                                       MineField.get_soldier_location()])
+                                                                               MineField.flowers,
+                                                                               MineField.bushes,
+                                                                               MineField.grass,
+                                                                               MineField.get_soldier_location()])
             data_frame.to_csv("CSV/CSV_data.csv", index=False)
 
-    elif time_pressed > 1:
+    else:
         if file_size != 0:
             if check_if_header_in_csv(key_pressed):
                 data_frame = pandas.read_csv("CSV/CSV_data.csv")
@@ -87,9 +69,7 @@ def add_elements_to_file(key_and_time_key_pressed):
                 return True
     return False
 
-def check_if_header_in_csv(header):
 
+def check_if_header_in_csv(header):
     header_list = pandas.read_csv("CSV/CSV_data.csv", nrows=0).columns.tolist()
-    if str(header) in header_list:
-        return True
-    return False
+    return str(header) in header_list

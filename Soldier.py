@@ -15,6 +15,7 @@ def placing_soldier(cords_tuple, solider_type="day"):
     Screen.screen.blit(soldier_img, cords_tuple)
 
 
+# move
 def moving_soldier(soldier_x_location, soldier_y_location, key):
     if key == pygame.K_LEFT:
         soldier_x_location -= Consts.SIZE
