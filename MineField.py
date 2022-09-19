@@ -9,6 +9,8 @@ bushes = []
 flowers = []
 soldier_location = []
 
+
+# load
 def create_mine_field_from_saved_files(saved_dict):
     global flowers, bushes, grass, mines, soldier_location
     saved_list = list(saved_dict.values())
@@ -34,6 +36,7 @@ def create_mine_field_from_saved_files(saved_dict):
             mine_field[soldier_location[position][0]][soldier_location[position][1]] = Consts.SOLIDER_LEGS
 
     put_flag()
+
 
 def create_empty_mine_field():
     for i in range(Consts.NUMBER_OF_ROWS):
@@ -101,6 +104,7 @@ def put_solider_in_matrix(coord_x, coord_y):
                 mine_field[row + i][col] = Consts.SOLIDER_LEGS
                 mine_field[row + i][col + 1] = Consts.SOLIDER_LEGS
 
+
 def get_soldier_location():
     soldier_location = []
     for x_index in range(len(mine_field)):
@@ -110,6 +114,7 @@ def get_soldier_location():
             if mine_field[x_index][y_index] == Consts.SOLIDER_LEGS:
                 soldier_location.append((x_index, y_index))
     return soldier_location
+
 
 def win_or_lose(coord_x, coord_y):
     # 1 - Lose, 2 - Win
@@ -129,4 +134,3 @@ def win_or_lose(coord_x, coord_y):
         return 2
 
     return 0
-
