@@ -13,7 +13,7 @@ soldier_locations = []
 """
 This function will load a saved game.
 :param saved_dict: a dictionary that contains the coordinates/indexes of these elements in order:
-mines, flowers, bushes, grass and soldier locations.
+mines, flowers, bushes, grass, soldier locations and teleports.
 :type saved_dict: dict
 """
 
