@@ -1,5 +1,6 @@
 import pygame
 import Database
+import Guard
 import MineField
 import Consts
 import Music
@@ -21,8 +22,8 @@ def main():
     soldier_x = Consts.SOLIDER_STARTING_PLACE[0]
     soldier_y = Consts.SOLIDER_STARTING_PLACE[1]
 
-    # guard_x = Consts.GUARD_STARTING_PLACE[0]
-    # guard_x = Consts.GUARD_STARTING_PLACE[1]
+    guard_x = Consts.GUARD_STARTING_PLACE[0]
+    guard_y = Consts.GUARD_STARTING_PLACE[1]
 
     MineField.create_empty()
     MineField.randomize_mines()
@@ -33,7 +34,6 @@ def main():
 
     while True:
         moved = False
-
         if (pygame.time.get_ticks() - screen_timer) / 1000 < 0.5 and was_pressed:  # dark surface
             Screen.create_dark_surface()
             Soldier.place_soldier((soldier_x, soldier_y), 'night')
