@@ -9,7 +9,6 @@ bushes = []
 flowers = []
 soldier_locations = []
 
-
 """
 This function will load a saved game.
 :param saved_dict: a dictionary that contains the coordinates/indexes of these elements in order:
@@ -122,24 +121,33 @@ This function will put the soldier in the matrix with the given coordinates
 """
 
 
-def put_solider_in_matrix(coord_x, coord_y):
-    col = coord_x // Consts.SIZE
-    row = coord_y // Consts.SIZE
+def put_solider_in_matrix(cords_tup, player_type="solider"):
+    if player_type == 'solider':
+        player_body = Consts.SOLIDER_BODY
+        player_legs = Consts.SOLIDER_LEGS
 
-    for x_index in range(len(mine_field)):
-        for y_index in range(len(mine_field[0])):
-            if (mine_field[x_index][y_index] == Consts.SOLIDER_BODY) or (
-                    mine_field[x_index][y_index] == Consts.SOLIDER_LEGS):
-                mine_field[x_index][y_index] = Consts.EMPTY
+        col = cords_tup[0] // Consts.SIZE
+        row = cords_tup[1] // Consts.SIZE
+
+        for x_index in range(len(mine_field)):
+            for y_index in range(len(mine_field[0])):
+                if (mine_field[x_index][y_index] == player_body) or (
+                        mine_field[x_index][y_index] == player_legs):
+                    mine_field[x_index][y_index] = Consts.EMPTY
+    else:
+        player_body = Consts.GUARD_BODY
+        player_legs = Consts.GUARD_LEGS
+        col = cords_tup // Consts.SIZE
+        row = 10
 
     for i in range(4):
         if mine_field[row + i][col] != Consts.MINES and mine_field[row + i][col + 1] != Consts.MINES:
             if mine_field[row + i][col] != Consts.FLAG and mine_field[row + i][col + 1] != Consts.FLAG:
-                mine_field[row + i][col] = Consts.SOLIDER_BODY
-                mine_field[row + i][col + 1] = Consts.SOLIDER_BODY
+                mine_field[row + i][col] = player_body
+                mine_field[row + i][col + 1] = player_legs
             if i == 3:
-                mine_field[row + i][col] = Consts.SOLIDER_LEGS
-                mine_field[row + i][col + 1] = Consts.SOLIDER_LEGS
+                mine_field[row + i][col] = player_legs
+                mine_field[row + i][col + 1] = player_legs
 
 
 """

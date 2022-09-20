@@ -46,14 +46,14 @@ def main():
 
             if guard_x == 0:
                 guard_type = 'left'
-            elif guard_x == 49 * Consts.SIZE:
+            elif guard_x == 48 * Consts.SIZE:
                 guard_type = 'right'
             Guard.place_guard((guard_x, guard_y), guard_type)
 
-            Guard.move_guard(guard_x,guard_type)
+            Guard.move_guard(guard_x, guard_type)
             if guard_type == 'left':
                 guard_x += 25
-            else: guard_x -=25
+            else: guard_x -= 25
 
         if (pygame.time.get_ticks() - message_timer) / 1000 < 2:  # welcome text
             Screen.welcome_text()
@@ -102,7 +102,8 @@ def main():
         Screen.create_light_surface()
         Soldier.place_soldier((soldier_x, soldier_y), 'day')
         win_or_lose = MineField.win_or_lose(soldier_x, soldier_y)
-        MineField.put_solider_in_matrix(soldier_x, soldier_y)
+        MineField.put_solider_in_matrix((soldier_x, soldier_y))
+        MineField.put_solider_in_matrix(guard_x, 'guard')
 
         # win or lose
         if win_or_lose != 0:

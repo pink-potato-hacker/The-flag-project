@@ -18,7 +18,7 @@ TRANSPARENT = (0, 0, 0, 0)
 
 SOLIDER_PNG_SIZE = (4, 2)  # 4 height, 2 width
 SOLIDER_STARTING_PLACE = (0, 0)  # x = 0, y = 0
-GUARD_STARTING_PLACE = (0, 240)
+GUARD_STARTING_PLACE = (0, 250)
 
 FLAG_SIZE = (3, 4)  # 3 height, 4 width
 FLAG_LOCATION = (21, 47)
@@ -28,7 +28,8 @@ TRAP_LENGTH = 3
 
 WIN_MESSAGE = "You won!"
 LOSE_MESSAGE = "You lost!"
-
+GUARD_BODY = 'guard body'
+GUARD_LEGS = 'guard legs'
 SOLIDER_LEGS = 'solider legs'
 SOLIDER_BODY = 'solider body'
 MINES = 'mine'
