@@ -21,8 +21,8 @@ def main():
     soldier_x = Consts.SOLIDER_STARTING_PLACE[0]
     soldier_y = Consts.SOLIDER_STARTING_PLACE[1]
 
-    # guard_x = Consts.GUARD_STARTING_PLACE[0]
-    # guard_x = Consts.GUARD_STARTING_PLACE[1]
+    guard_x = Consts.GUARD_STARTING_PLACE[0]
+    guard_y = Consts.GUARD_STARTING_PLACE[1]
 
     MineField.create_empty()
     MineField.randomize_mines()
