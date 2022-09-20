@@ -186,10 +186,4 @@ def win_or_lose(coord_x, coord_y):
             (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE + 1 == 48):
         return 2
 
-    elif (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE == 47) or \
-            (coord_y // Consts.SIZE + 1 == 22 and coord_x // Consts.SIZE == 48) or \
-            (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE == 47) or \
-            (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE == 48):
-        return 2
-
     return 0

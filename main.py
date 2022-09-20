@@ -30,17 +30,30 @@ def main():
     MineField.get_cords_for_elements()
     MineField.put_flag()
     Teleport.randomize_teleports()
-    print(Teleport.teleports)
 
+    guard_x = 0
     while True:
         moved = False
+
         if (pygame.time.get_ticks() - screen_timer) / 1000 < 0.5 and was_pressed:  # dark surface
             Screen.create_dark_surface()
             Soldier.place_soldier((soldier_x, soldier_y), 'night')
+
         else:  # light surface
             was_pressed = False
             Screen.create_light_surface()
             Soldier.place_soldier((soldier_x, soldier_y))
+
+            if guard_x == 0:
+                guard_type = 'left'
+            elif guard_x == 49 * Consts.SIZE:
+                guard_type = 'right'
+            Guard.place_guard((guard_x, guard_y), guard_type)
+
+            Guard.move_guard(guard_x,guard_type)
+            if guard_type == 'left':
+                guard_x += 25
+            else: guard_x -=25
 
         if (pygame.time.get_ticks() - message_timer) / 1000 < 2:  # welcome text
             Screen.welcome_text()
