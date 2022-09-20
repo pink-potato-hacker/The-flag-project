@@ -12,7 +12,7 @@ soldier_locations = []
 """
 This function will load a saved game.
 :param saved_dict: a dictionary that contains the coordinates/indexes of these elements in order:
-mines, flowers, bushes, grass, soldier locations and teleports.
+mines, flowers, bushes, grass, soldier locations, teleports and guard locations.
 :type saved_dict: dict
 """
 
@@ -132,13 +132,13 @@ def put_solider_in_matrix(cords_tup, player_type="solider"):
         for x_index in range(len(mine_field)):
             for y_index in range(len(mine_field[0])):
                 if (mine_field[x_index][y_index] == player_body) or (
-                        mine_field[x_index][y_index] == player_legs):
+                        mine_field[x_index][y_index] == player_legs) or (mine_field[x_index][y_index] == Consts.GUARD):
                     mine_field[x_index][y_index] = Consts.EMPTY
     else:
-        player_body = Consts.GUARD_BODY
-        player_legs = Consts.GUARD_LEGS
+        player_body = Consts.GUARD
+        player_legs = Consts.GUARD
         col = cords_tup // Consts.SIZE
-        row = 10
+        row = 9
 
     for i in range(4):
         if mine_field[row + i][col] != Consts.MINES and mine_field[row + i][col + 1] != Consts.MINES:
@@ -153,7 +153,7 @@ def put_solider_in_matrix(cords_tup, player_type="solider"):
 """
 This function will return the current position of the soldier in matrix.
 :return soldier_location: list of tuples of soldier's position in matrix.
-:rtype 0,1,soldier_location: list
+:rtype soldier_location: list
 """
 
 
@@ -193,5 +193,16 @@ def win_or_lose(coord_x, coord_y):
             (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE + 1 == 47) or \
             (coord_y // Consts.SIZE + 1 == 21 and coord_x // Consts.SIZE + 1 == 48):
         return 2
+
+    elif mine_field[coord_y // Consts.SIZE + 3][coord_x // Consts.SIZE] == Consts.GUARD or \
+            mine_field[coord_y // Consts.SIZE + 3][coord_x // Consts.SIZE + 1] == Consts.GUARD or \
+            mine_field[coord_y // Consts.SIZE + 2][coord_x // Consts.SIZE] == Consts.GUARD or \
+            mine_field[coord_y // Consts.SIZE + 2][coord_x // Consts.SIZE + 1] == Consts.GUARD or \
+            mine_field[coord_y // Consts.SIZE + 1][coord_x // Consts.SIZE ] == Consts.GUARD or \
+            mine_field[coord_y // Consts.SIZE + 1][coord_x // Consts.SIZE + 1] == Consts.GUARD or \
+            mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE] == Consts.GUARD or \
+            mine_field[coord_y // Consts.SIZE][coord_x // Consts.SIZE + 1] == Consts.GUARD:
+
+        return 1
 
     return 0

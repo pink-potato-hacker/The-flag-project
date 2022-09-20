@@ -3,6 +3,7 @@ import Teleport
 import pandas
 import os
 import ast
+import Guard
 
 save_files = {}
 curr_file = {}
@@ -31,7 +32,8 @@ def add_to_file(key_and_time_key_pressed):
                                        MineField.bushes,
                                        MineField.grass,
                                        MineField.get_soldier_location(),
-                                       Teleport.teleports]
+                                       Teleport.teleports,
+                                       Guard.get_guard_location()]
             data_frame = pandas.DataFrame(save_files)
             data_frame.to_csv("CSV/CSV_data.csv", index=False)
 
@@ -42,7 +44,8 @@ def add_to_file(key_and_time_key_pressed):
                                        MineField.bushes,
                                        MineField.grass,
                                        MineField.get_soldier_location(),
-                                       Teleport.teleports]
+                                       Teleport.teleports,
+                                       Guard.get_guard_location()]
             data_frame.to_csv("CSV/CSV_data.csv", index=False)
 
         elif check_for_header(key_pressed):  # file contains the given header
@@ -53,7 +56,8 @@ def add_to_file(key_and_time_key_pressed):
                                        MineField.bushes,
                                        MineField.grass,
                                        MineField.get_soldier_location(),
-                                       Teleport.teleports]
+                                       Teleport.teleports,
+                                       Guard.get_guard_location()]
             data_frame.to_csv("CSV/CSV_data.csv", index=False)
 
     else:
@@ -68,6 +72,7 @@ def add_to_file(key_and_time_key_pressed):
                 curr_file[key_pressed] = data_list
                 MineField.load(curr_file)
                 Teleport.load_tels(curr_file)
+                Guard.load_guard(curr_file)
                 curr_file = {}
 
                 return True

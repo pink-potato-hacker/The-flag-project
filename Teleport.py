@@ -86,7 +86,7 @@ def pick_teleport(coord_x, coord_y):
 """
 This function will load a saved game.
 :param saved_dict: a dictionary that contains the coordinates/indexes of these elements in order:
-mines, flowers, bushes, grass, soldier locations and teleports.
+mines, flowers, bushes, grass, soldier locations, teleports and guard locations.
 :type saved_dict: dict
 """
 

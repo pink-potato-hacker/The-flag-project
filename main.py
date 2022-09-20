@@ -53,7 +53,8 @@ def main():
             Guard.move_guard(guard_x, guard_type)
             if guard_type == 'left':
                 guard_x += 25
-            else: guard_x -= 25
+            else:
+                guard_x -= 25
 
         if (pygame.time.get_ticks() - message_timer) / 1000 < 2:  # welcome text
             Screen.welcome_text()
@@ -77,6 +78,8 @@ def main():
                     if Database.add_to_file(key):  # load a new game
                         soldier_x = MineField.soldier_locations[0][1] * Consts.SIZE
                         soldier_y = MineField.soldier_locations[0][0] * Consts.SIZE
+                        guard_x = Guard.guard_locations[0][1] * Consts.SIZE
+                        guard_y = Guard.guard_locations[0][0] * Consts.SIZE
                     moved = True
 
                 if event.key == pygame.K_RETURN:  # dark surface
@@ -103,6 +106,7 @@ def main():
         Soldier.place_soldier((soldier_x, soldier_y), 'day')
         win_or_lose = MineField.win_or_lose(soldier_x, soldier_y)
         MineField.put_solider_in_matrix((soldier_x, soldier_y))
+        print(MineField.mine_field)
         MineField.put_solider_in_matrix(guard_x, 'guard')
 
         # win or lose
