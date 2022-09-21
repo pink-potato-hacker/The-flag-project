@@ -15,12 +15,12 @@ with the given coordinates.
 
 def place_soldier(cords_tuple, solider_type="day"):
     if solider_type == "day":
-        soldier_img = pygame.image.load("png files/soldier.png")
+        capybara_img = pygame.image.load("png files/daycapybara.png")
     elif solider_type == "night":
-        soldier_img = pygame.image.load("png files/soldier_nigth.png")
+        capybara_img = pygame.image.load("png files/nightcapybara.png")
     elif solider_type == "dead":
-        soldier_img = pygame.image.load("png files/injury.png")
+        capybara_img = pygame.image.load("png files/deadcapybara.png")
 
-    soldier_img = pygame.transform.scale(soldier_img, (Consts.SIZE * 2, Consts.SIZE * 4))
-    Screen.screen.blit(soldier_img, cords_tuple)
+    capybara_img = pygame.transform.scale(capybara_img, (Consts.SIZE * 4, Consts.SIZE * 4))
+    Screen.screen.blit(capybara_img, cords_tuple)
 
